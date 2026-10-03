@@ -1,0 +1,9 @@
+BYMANJURIA — v21 FIGMA LIVE UPDATE
+
+- EVENT & LIVE keeps the manual editorial layout from v20.
+- OFFTOP 02 now includes selected original Figma exports from assets/figma-export/.
+- OFFTOP 02 visual system section uses: Frame 57.png, Frame 58.png, Post 1.png, Post 3.png, Post 5.png, Post 6-1.png, Post 7.png, Story 1.png.
+- OFFTOP 02 remains the featured case because it combines production, event operations, visual design, merch and the ROOM616 recording zone.
+- OFFTOP 01 and 03 still explicitly state that the event visual identity was not designed by ByManjuria.
+- All important design images keep their natural aspect ratio; no forced cropping.
+- New stable folder: assets/figma-export/. Future builds can keep the same code while this folder is replaced, provided these referenced filenames remain present.

@@ -1,0 +1,19 @@
+BYMANJURIA PORTFOLIO — v20 EDITORIAL UPDATE
+
+Changes in this build:
+- Fixes the content/header overlap in COVER, STUDIO, EVENT & LIVE, VIDEO, PHOTOS and NOTES.
+- Resets NOTES/CV sidebar geometry so the left side is no longer clipped.
+- Rebuilds EVENT & LIVE as a hand-authored editorial layout instead of automatic masonry.
+- OFFTOP 2 is treated as the main live case; OFFTOP 1 and 3 explicitly avoid claiming visual design.
+- Keeps OFFTOP 3 posters 03 + 04 as one fixed diptych.
+- Removes the duplicated OFFTOP 3 photo from the live layout and uses selected supporting archive frames.
+- Rewrites the main employer-facing copy in EN/RU.
+- Reframes positioning as Creative Producer / Content Specialist.
+- Updates ROOM616 and VIDEO copy.
+- Rebuilds CV/Notes around Overview, Experience, ROOM616, Skills, Education and Contacts.
+- Separates core capabilities from software tools.
+- Adds employer-facing role text to the startup screen.
+- Disables window dragging on mobile/touch viewports.
+
+MEDIA NOTE
+The Figma connector reached its Starter-plan MCP call limit while exporting Figma-only source images. This build therefore contains the current master assets archive plus the editorial layout prepared for the reviewed OFFTOP material. Figma-only images that are not present in the master assets archive could not be bundled in this turn without downsampling them from a board screenshot.

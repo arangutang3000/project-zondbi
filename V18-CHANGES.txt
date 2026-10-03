@@ -1,0 +1,10 @@
+V18 LAYOUT PASS
+- Inset rounded macOS title capsule on every window.
+- COVER: 64% artwork / 36% information; one artwork dominates viewport.
+- LIVE: dense CSS grid mosaic instead of independent masonry columns; no large empty right-hand area.
+- LIVE video preserves native aspect ratio, autoplay muted loop, optional sound.
+- VIDEO local clips use same moving-image behavior.
+- Photoshop/Premiere/FL Studio are compact 470x250 utility windows.
+- Skills presentation is reduced; software skills are no longer visually over-explained.
+- Main content typography remains readable at 14px body / ~30px headings.
+- CV sidebar forced to left.

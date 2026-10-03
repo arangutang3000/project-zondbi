@@ -1,0 +1,16 @@
+V23 — MANUAL MEDIA LAYOUT
+
+- EVENT & LIVE rebuilt from the user-supplied Pixelmator reference.
+- OFFTOP 01 / 02 / 03 use fixed manual rows instead of masonry/column flow.
+- Media working area is capped at 736px on desktop.
+- Gap is fixed at 8px on desktop (5px mobile).
+- Items sharing a row always share the same row height.
+- OFFTOP 03 keeps the vertical-photo + two-photo stack composition.
+- STUDIO follows the 4th reference column: full hero, 7/5, 5/7, 7/5 rows.
+- PHOTOS follows the 5th reference column and has no left navigation sidebar.
+- PHOTOS expects photo-01 through photo-12 in assets/photos (jpg/JPG/jpeg/png supported).
+- STUDIO supports studio-photo-01 through studio-photo-06 with common image extensions.
+- Missing optional media removes itself and does not leave a black placeholder/hole.
+- Text blocks remain between media groups as in the editorial version.
+
+Use the same workflow as before: replace the build's assets folder with your current master assets folder.

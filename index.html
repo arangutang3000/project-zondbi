@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="ByManjuria — Creative Producer / Content Specialist working across visual design, video, music production and live events.">
+  <title>ByManjuria — Creative Producer / Content Specialist · Final</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="v24-mobile.css">
+<link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <div class="desktop" id="desktop">
+    <div class="wallpaper-fallback"></div><div class="wallpaper-overlay"></div>
+    <div class="boot-screen" id="bootScreen" aria-hidden="true"><div class="boot-mark">BYMANJURIA</div><div class="boot-role">CREATIVE PRODUCER / CONTENT SPECIALIST</div><div class="boot-fields">VISUAL DESIGN · VIDEO · MUSIC · LIVE</div><div class="boot-status">Loading creative workspace…</div><div class="boot-line"><span></span></div></div>
+    <header class="menubar">
+      <button class="apple-btn" id="appleBtn" aria-label="Open Apple menu"></button>
+      <button class="name-btn" id="nameBtn">ByManjuria</button>
+      <span class="menu-label desktop-only">Creative Producer / Content Specialist</span><div class="menu-spacer"></div>
+      <button class="menu-status" id="dateTime" aria-label="Current date and time">—</button><button class="menu-status lang-toggle" id="langToggle" aria-label="Language">EN</button>
+    </header>
+    <main class="desktop-icons" id="desktopIcons" aria-label="Portfolio folders">
+      <button class="desktop-icon" data-open="cover" data-position="15,18"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/cover.png" alt="COVER"></span><span>COVER</span></button>
+      <button class="desktop-icon" data-open="studio" data-position="78,19"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/studio.png" alt="STUDIO"></span><span>STUDIO</span></button>
+      <button class="desktop-icon" data-open="live" data-position="18,63"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/live.png" alt="EVENT &amp; LIVE"></span><span>EVENT &amp; LIVE</span></button>
+      <button class="desktop-icon" data-open="video" data-position="72,61"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/video.png" alt="VIDEO"></span><span>VIDEO</span></button>
+    </main>
+    <div class="windows" id="windows"></div>
+    <nav class="dock" aria-label="Portfolio applications">
+      <div class="dock-group">
+        <button class="dock-icon telegram-icon" data-dock-key="contact-telegram" data-label="Telegram" aria-label="Telegram"><span>✈</span></button>
+        <button class="dock-icon instagram-icon" data-dock-key="contact-instagram" data-label="Instagram" aria-label="Instagram"><span>◎</span></button>
+        <button class="dock-icon mail-icon" data-dock-key="contact-mail" data-label="Email" aria-label="Email"><span>✉</span></button>
+        <button class="dock-icon linkedin-icon" data-dock-key="contact-linkedin" data-label="LinkedIn" aria-label="LinkedIn"><span>in</span></button>
+      </div><span class="dock-divider"></span><div class="dock-group">
+        <button class="dock-icon photos-icon" data-dock-key="photos" data-open="photos" data-label="Photos" aria-label="Photos"><span>✺</span></button>
+        <button class="dock-icon notes-icon" data-dock-key="notes" data-open="notes" data-label="CV / Notes" aria-label="CV / Notes"><span>☷</span></button>
+      </div><span class="dock-divider"></span><div class="dock-group">
+        <button class="dock-icon app-icon photoshop-icon" data-dock-key="photoshop" data-open="photoshop" data-label="Photoshop" aria-label="Photoshop"><span>Ps</span></button>
+        <button class="dock-icon app-icon premiere-icon" data-dock-key="premiere" data-open="premiere" data-label="Premiere Pro" aria-label="Premiere Pro"><span>Pr</span></button>
+        <button class="dock-icon app-icon fl-icon" data-dock-key="flstudio" data-open="flstudio" data-label="FL Studio" aria-label="FL Studio"><span>FL</span></button>
+      </div>
+    </nav>
+    <div class="context-menu hidden" id="appleMenu">
+      <button id="menuResume">Download CV / Resume</button>
+      <button id="changeWallpaper">Change Wallpaper…</button><button id="customizeIcons">Change Desktop Images…</button><button id="customizeDockIcons">Change Dock Icons…</button><button id="uploadPhotos" style="display:none" aria-hidden="true">Upload portfolio photos…</button><button id="resetIconPositions">Reset folder positions</button>
+      <div class="context-separator"></div><button id="closeAll">Close all windows</button>
+    </div>
+    <input id="wallpaperPicker" type="file" accept="image/*" hidden><input id="iconPicker" type="file" accept="image/*" hidden><input id="dockIconPicker" type="file" accept=".icns,application/x-apple-diskimage" hidden><input id="portfolioUploadPicker" type="file" accept="image/*,video/*" multiple hidden><input id="assetsFolderPicker" type="file" webkitdirectory directory multiple hidden>
+    <div class="icon-customizer hidden" id="iconCustomizer" role="dialog" aria-modal="true"><div class="icon-customizer-panel"><div class="customizer-head"><div><div class="kicker">DESKTOP</div><h2>Change desktop images</h2></div><button class="customizer-close" id="closeIconCustomizer">×</button></div><div class="customizer-list" id="iconCustomizerList"></div><div class="customizer-foot">Default manual assets live in assets/desktop/. Browser changes are saved locally.</div></div></div>
+    <div class="dock-customizer hidden" id="dockCustomizer" role="dialog" aria-modal="true"><div class="dock-customizer-panel"><div class="customizer-head"><div><div class="kicker">DOCK</div><h2>Change Dock Icons</h2></div><button class="customizer-close" id="closeDockCustomizer">×</button></div><div class="customizer-list" id="dockCustomizerList"></div><div class="customizer-foot">Dock icons use Apple .icns files. The browser extracts a readable image from the icon.</div></div></div>
+    <div class="upload-customizer hidden" id="uploadCustomizer" role="dialog" aria-modal="true"><div class="upload-customizer-panel"><div class="customizer-head"><div><div class="kicker">PORTFOLIO MEDIA</div><h2>Upload photos &amp; video</h2></div><button class="customizer-close" id="closeUploadCustomizer">×</button></div><div class="customizer-list" id="uploadCustomizerList"></div><div class="customizer-foot">Permanent project files belong in assets/. Browser uploads are a temporary convenience; keep your master assets/ folder when moving to a new site version.</div></div></div>
+    <div class="toast hidden" id="toast"></div>
+  </div>
+  <script src="script.js"></script>
+  <script src="v14-project2.js"></script>
+  <script src="v15-unified.js"></script>
+  <script src="v16-refine.js"></script>
+  <script src="v17-dock-hotfix.js"></script>
+  <script src="v18-layout-pass.js"></script>
+  <script src="v19-final-polish.js"></script>
+  <script src="v20-editorial-update.js"></script>
+  <script src="v22-clean-live.js"></script>
+  <script src="v23-manual-layout.js"></script>
+<script src="final.js"></script>
+</body>
+</html>

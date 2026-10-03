@@ -1,0 +1,6 @@
+V16:
+- Dock icons are exact PNG extractions of the user's ICNS files (1024x1024 source), stored outside /assets so replacing the master assets folder does not delete them.
+- LIVE and STUDIO use assets/live/icns.png and assets/studio/icns-studio.png in section headers.
+- LIVE media uses masonry/natural image proportions, no forced square crop.
+- LIVE and local VIDEO MP4s autoplay muted, loop, and have SOUND OFF/ON.
+- All primary windows share the project2/macOS visual language and scale.
