@@ -423,7 +423,9 @@ document.getElementById('dateTime').addEventListener('click',e=>e.preventDefault
 document.getElementById('appleBtn').addEventListener('click',e=>{e.stopPropagation();appleMenu.classList.toggle('hidden');});document.getElementById('nameBtn').textContent=profile.displayName;document.getElementById('nameBtn').addEventListener('click',()=>openWindow('notes'));
 document.getElementById('menuResume').addEventListener('click',()=>{appleMenu.classList.add('hidden');const a=document.createElement('a');a.href=links.resume;a.download='ByManjuria-CV.pdf';a.target='_blank';a.rel='noreferrer';document.body.appendChild(a);a.click();a.remove();});document.getElementById('changeWallpaper').addEventListener('click',()=>{appleMenu.classList.add('hidden');chooseWallpaper();});document.getElementById('customizeIcons').addEventListener('click',()=>{appleMenu.classList.add('hidden');openIconCustomizer();});document.getElementById('resetIconPositions').addEventListener('click',()=>{resetDesktopIconPositions();appleMenu.classList.add('hidden');});document.getElementById('closeAll').addEventListener('click',()=>{windows.innerHTML='';appleMenu.classList.add('hidden');});document.addEventListener('click',e=>{if(!appleMenu.contains(e.target)&&e.target.id!=='appleBtn')appleMenu.classList.add('hidden');});
 
-window.addEventListener('load',()=>setTimeout(()=>bootScreen?.classList.add('is-hidden'),900));
+// Do not wait for every large video and external embed before showing the
+// portfolio. Those resources can continue loading after the interface is ready.
+document.addEventListener('DOMContentLoaded',()=>setTimeout(()=>bootScreen?.classList.add('is-hidden'),900));
 window.addEventListener('resize',()=>{hideDockTooltip();[...windows.children].forEach(w=>{const data=content[w.dataset.key];if(data&&!w.classList.contains('maximized'))applyWindowSize(w,w.dataset.key,data);});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const open=[...windows.children].filter(w=>!w.classList.contains('minimized')).sort((a,b)=>Number(b.style.zIndex)-Number(a.style.zIndex))[0];if(open)open.remove();}});
 
