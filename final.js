@@ -57,6 +57,7 @@
   updateCredit(); document.getElementById('desktop').appendChild(credit);
   const updateProjectWidget = () => {
     const russian = ru();
+    document.querySelector('.project-widget')?.classList.toggle('is-ru', russian);
     document.querySelectorAll('.project-widget [data-en]').forEach(el => {
       el.textContent = russian ? el.dataset.ru : el.dataset.en;
     });
