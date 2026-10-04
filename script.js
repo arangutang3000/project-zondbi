@@ -112,7 +112,6 @@ const content = {
   studio: { title:'STUDIO', type:'studio' },
   live: { title:'EVENT & LIVE', type:'events' },
   video: { title:'VIDEO', type:'videos' },
-  work: { title:'WORK WITH ME', type:'work' },
   photoshop: { title:'Adobe Photoshop', type:'skill', short:'Ps', years:'CONFIDENT WORKING EXPERIENCE', skills:['Cover art','Posters','Typography','Photo manipulation','Menus','Merchandise','Marketplace graphics'] },
   premiere: { title:'Adobe Premiere Pro', type:'skill', short:'Pr', years:'VIDEO EDITING', skills:['Music videos','Short-form content','Vertical video','Social content','Editing'] },
   flstudio: { title:'FL Studio', type:'skill', short:'FL', years:'8 YEARS', skills:['Recording','Music production','Arrangement','Mixing','Mastering'] }
@@ -344,18 +343,14 @@ async function renderBody(data){
   if(data.type==='events')return renderEvents();
   if(data.type==='videos')return renderVideos();
   if(data.type==='studio')return renderStudio();
-  if(data.type==='work')return renderWorkWithMe();
   if(data.type==='skill')return renderSkill(data);
   return '';
 }
-
-function renderWorkWithMe(){return `<div class="work-with-me"><div class="work-with-me-kicker">AVAILABLE FOR SELECTED PROJECTS</div><h1>LET’S MAKE<br>SOMETHING.</h1><p class="work-with-me-lead">I create visual identity and fast, expressive websites for artists, events and small brands.</p><div class="work-with-me-services"><article><span>01</span><h2>VISUAL IDENTITY</h2><p>Cover art, posters, merchandise and social visuals that make a project feel like one world.</p></article><article><span>02</span><h2>PORTFOLIO / LANDING</h2><p>A focused website for an artist, event or business — clear, personal and ready to share.</p></article><article><span>03</span><h2>FULL LAUNCH</h2><p>Visual direction, a landing page and promotional materials built together from the start.</p></article></div><div class="work-with-me-footer"><div><strong>START IN TELEGRAM</strong><span>Tell me about the idea, timing and approximate budget. I’ll reply within 24 hours.</span></div><a class="work-with-me-cta" href="${esc(links.telegram)}" target="_blank" rel="noreferrer">OPEN TELEGRAM ↗</a></div></div>`;}
 
 function getWindowSize(key,data){
   if(data.type==='notes')return{width:980,height:650};
   if(data.type==='photos')return{width:1000,height:650};
   if(['cover','events','videos','studio'].includes(data.type))return{width:1080,height:720};
-  if(data.type==='work')return{width:820,height:650};
   if(data.type==='about')return{width:860,height:600};
   if(data.type==='skill')return{width:560,height:480};
   return{width:720,height:500};
