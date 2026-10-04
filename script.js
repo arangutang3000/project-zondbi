@@ -195,7 +195,11 @@ desktopIcons.querySelectorAll('.desktop-icon').forEach(icon=>{
   handle.addEventListener('pointermove',e=>{
     if(!dragging||e.pointerId!==pointerId)return;
     const desktopRect=desktopIcons.getBoundingClientRect();
-    const xPx=e.clientX-offsetX; const yPx=e.clientY-offsetY;
+    // Pointer coordinates are viewport-relative, whereas the icon coordinates
+    // are relative to the desktop area. Convert them into the same space before
+    // calculating the icon centre so the folder stays under the cursor.
+    const xPx=e.clientX-desktopRect.left-offsetX;
+    const yPx=e.clientY-desktopRect.top-offsetY;
     const centerX=xPx+icon.offsetWidth/2, centerY=yPx+icon.offsetHeight/2;
     const x=centerX/desktopRect.width*100; const y=centerY/desktopRect.height*100;
     if(Math.hypot(e.clientX-startX,e.clientY-startY)>4)moved=true;
