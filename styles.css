@@ -518,7 +518,12 @@ html,body,button,input,a{font-family:var(--sf)!important}
 
 /* The card follows its translated content, so neither language leaves a dead area. */
 .project-widget{height:auto!important;min-height:0!important;justify-content:center!important}.project-widget h2,.project-widget p,.project-widget-tags{width:100%}
-@media(min-width:769px){.project-widget.is-ru{width:210px}.project-widget.is-ru h2,.project-widget.is-ru p{max-width:none;white-space:nowrap}.project-widget.is-ru .project-widget-top{font-size:5.5px;letter-spacing:.06em}.project-widget.is-ru h2{font-size:16px}.project-widget.is-ru p{font-size:8px}.project-widget.is-ru .project-widget-tags{width:auto;flex-wrap:nowrap;gap:3px!important}.project-widget.is-ru .project-widget-tags span{padding:5px 4px!important;font-size:6px!important}}
+/* Both languages share typography and reserved rows; translation never resizes the card. */
+.project-widget h2{white-space:nowrap;flex-shrink:0}
+.project-widget p{min-height:2.6em;flex-shrink:0}
+.project-widget-tags{flex-wrap:nowrap!important;flex-shrink:0}
+.project-widget-tags span{padding-left:6px!important;padding-right:6px!important}
+@media(min-width:769px){.project-widget h2{font-size:20px;line-height:1.1}}
 @media(min-width:769px){.project-widget,.project-widget.is-ru{width:210px!important;height:150px!important}}
 @media(max-width:768px){.project-widget,.project-widget.is-ru{width:166px!important;height:148px!important}}
 
