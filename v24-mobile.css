@@ -1,0 +1,25 @@
+/* v24: mobile-only adjustments; original desktop composition retained. */
+@media (max-width:768px) {
+  .desktop {height:100dvh; min-height:0;}
+  .menubar {top:calc(5px + env(safe-area-inset-top))!important;}
+  .desktop-icons {top:calc(52px + env(safe-area-inset-top))!important;bottom:calc(80px + env(safe-area-inset-bottom))!important;overflow-y:auto;grid-auto-rows:minmax(110px,145px)!important;}
+  .dock {bottom:calc(8px + env(safe-area-inset-bottom))!important; scrollbar-width:none;}
+  .dock::-webkit-scrollbar {display:none;}
+  .dock-group {flex-shrink:0;}
+  .windows .window:not([data-key="photoshop"]):not([data-key="premiere"]):not([data-key="flstudio"]) {top:calc(34px + env(safe-area-inset-top))!important;bottom:calc(70px + env(safe-area-inset-bottom))!important;}
+  .window-header {min-height:44px;}
+  .traffic {width:36px!important;}
+  .traffic .close {width:28px;height:28px;}
+  .traffic .close::after {opacity:1;font-size:17px;}
+  .window-spacer {width:36px!important;}
+  .v23-case-head>div {min-width:0;overflow-wrap:anywhere;}
+  .v23-scroll {overscroll-behavior:contain;}
+  .v23-sound {min-height:32px;min-width:60px;}
+  .window[data-key="notes"] .notes-app {grid-template-columns:94px minmax(0,1fr)!important;}
+  .window[data-key="notes"] .notes-sidebar {display:block!important;width:94px!important;min-width:0!important;overflow-y:auto;}
+  .window[data-key="notes"] .notes-content {overflow-wrap:anywhere;}
+}
+@media (max-width:768px) and (max-height:480px) {
+  .desktop-icons {grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-auto-rows:110px!important;}
+  .desktop-icon {height:110px!important;}
+}

@@ -1,0 +1,1 @@
+v24.1: LIVE now uses actual PNG filenames from live.zip. All referenced LIVE files verified locally. Five videos included. Desktop stylesheet unchanged; mobile refinements retained. Browser visual check not completed.

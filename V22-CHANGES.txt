@@ -1,0 +1,6 @@
+v22 CLEAN LIVE
+- OFFTOP 02 Figma exports are now site-ready, renamed, and stored under assets/figma-export/offtop-02/.
+- Removed implementation/debug copy from the portfolio page.
+- Replaced the rigid Figma grid with a dense natural-ratio editorial wall (no placeholder cells or forced crop).
+- Missing images remove themselves instead of rendering black alt-text boxes.
+- Kept OFFTOP 01/03 attribution clear: their visual identity is not presented as ByManjuria's design.

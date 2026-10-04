@@ -1,0 +1,1 @@
+LIVE media is included in assets/live. Keep this folder. Add other assets alongside it. Do not create assets/assets.
