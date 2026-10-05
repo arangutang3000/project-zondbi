@@ -55,5 +55,13 @@
   credit.className = 'site-credit';
   const updateCredit = () => { credit.textContent = ru() ? 'Сайт создан ByManjuria' : 'Website created by ByManjuria'; };
   updateCredit(); document.getElementById('desktop').appendChild(credit);
-  document.getElementById('langToggle')?.addEventListener('click', updateCredit);
+  const updateProjectWidget = () => {
+    const russian = ru();
+    document.querySelector('.project-widget')?.classList.toggle('is-ru', russian);
+    document.querySelectorAll('.project-widget [data-en]').forEach(el => {
+      el.textContent = russian ? el.dataset.ru : el.dataset.en;
+    });
+  };
+  updateProjectWidget();
+  document.getElementById('langToggle')?.addEventListener('click', () => { updateCredit(); updateProjectWidget(); });
 })();

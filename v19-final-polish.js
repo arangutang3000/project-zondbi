@@ -85,7 +85,7 @@
   renderSkill=function(data){
     const key=String(data.title).toLowerCase();
     const icon=key.includes('photoshop')?'dock-fallback/photoshop.png':key.includes('premiere')?'dock-fallback/premiere.png':'dock-fallback/flstudio.png';
-    const skills=key.includes('photoshop')?[t('COVER ART','ОБЛОЖКИ'),t('TYPOGRAPHY','ТИПОГРАФИКА'),t('COMPOSITING','КОМПОЗИТИНГ')]:key.includes('premiere')?[t('VIDEO EDITING','МОНТАЖ'),t('SHORT-FORM','КОРОТКИЙ ФОРМАТ'),t('MUSIC VIDEO','КЛИПЫ')]:['8 YEARS / 8 ЛЕТ',t('RECORDING','ЗАПИСЬ'),t('MIXING / PRODUCTION','СВЕДЕНИЕ / ПРОДАКШН')];
+    const skills=key.includes('photoshop')?[t('COVER ART','ОБЛОЖКИ'),t('TYPOGRAPHY','ТИПОГРАФИКА'),t('COMPOSITING','КОМПОЗИТИНГ')]:key.includes('premiere')?[t('VIDEO EDITING','МОНТАЖ'),t('SHORT-FORM','КОРОТКИЙ ФОРМАТ'),t('MUSIC VIDEO','КЛИПЫ')]:[t('8 YEARS','8 ЛЕТ'),t('RECORDING','ЗАПИСЬ'),t('MIXING / PRODUCTION','СВЕДЕНИЕ / ПРОДАКШН')];
     return `<div class="v19-utility"><img src="${icon}" alt=""><div><div class="v19-meta">${t('APPLICATION / SKILL','ПРОГРАММА / НАВЫК')}</div><h1>${String(data.title).toUpperCase()}</h1><div class="v19-tags">${skills.map(x=>`<span>${x}</span>`).join('')}</div></div></div>`;
   };
 

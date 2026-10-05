@@ -195,7 +195,11 @@ desktopIcons.querySelectorAll('.desktop-icon').forEach(icon=>{
   handle.addEventListener('pointermove',e=>{
     if(!dragging||e.pointerId!==pointerId)return;
     const desktopRect=desktopIcons.getBoundingClientRect();
-    const xPx=e.clientX-offsetX; const yPx=e.clientY-offsetY;
+    // Pointer coordinates are viewport-relative, whereas the icon coordinates
+    // are relative to the desktop area. Convert them into the same space before
+    // calculating the icon centre so the folder stays under the cursor.
+    const xPx=e.clientX-desktopRect.left-offsetX;
+    const yPx=e.clientY-desktopRect.top-offsetY;
     const centerX=xPx+icon.offsetWidth/2, centerY=yPx+icon.offsetHeight/2;
     const x=centerX/desktopRect.width*100; const y=centerY/desktopRect.height*100;
     if(Math.hypot(e.clientX-startX,e.clientY-startY)>4)moved=true;
@@ -419,7 +423,9 @@ document.getElementById('dateTime').addEventListener('click',e=>e.preventDefault
 document.getElementById('appleBtn').addEventListener('click',e=>{e.stopPropagation();appleMenu.classList.toggle('hidden');});document.getElementById('nameBtn').textContent=profile.displayName;document.getElementById('nameBtn').addEventListener('click',()=>openWindow('notes'));
 document.getElementById('menuResume').addEventListener('click',()=>{appleMenu.classList.add('hidden');const a=document.createElement('a');a.href=links.resume;a.download='ByManjuria-CV.pdf';a.target='_blank';a.rel='noreferrer';document.body.appendChild(a);a.click();a.remove();});document.getElementById('changeWallpaper').addEventListener('click',()=>{appleMenu.classList.add('hidden');chooseWallpaper();});document.getElementById('customizeIcons').addEventListener('click',()=>{appleMenu.classList.add('hidden');openIconCustomizer();});document.getElementById('resetIconPositions').addEventListener('click',()=>{resetDesktopIconPositions();appleMenu.classList.add('hidden');});document.getElementById('closeAll').addEventListener('click',()=>{windows.innerHTML='';appleMenu.classList.add('hidden');});document.addEventListener('click',e=>{if(!appleMenu.contains(e.target)&&e.target.id!=='appleBtn')appleMenu.classList.add('hidden');});
 
-window.addEventListener('load',()=>setTimeout(()=>bootScreen?.classList.add('is-hidden'),900));
+// Do not wait for every large video and external embed before showing the
+// portfolio. Those resources can continue loading after the interface is ready.
+document.addEventListener('DOMContentLoaded',()=>setTimeout(()=>bootScreen?.classList.add('is-hidden'),900));
 window.addEventListener('resize',()=>{hideDockTooltip();[...windows.children].forEach(w=>{const data=content[w.dataset.key];if(data&&!w.classList.contains('maximized'))applyWindowSize(w,w.dataset.key,data);});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const open=[...windows.children].filter(w=>!w.classList.contains('minimized')).sort((a,b)=>Number(b.style.zIndex)-Number(a.style.zIndex))[0];if(open)open.remove();}});
 
