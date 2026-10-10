@@ -31,3 +31,23 @@
 .dock .dock-icon:focus-visible{filter:brightness(1.08)!important;box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.28)!important}
 .dock .dock-icon.is-open::after{content:"";position:absolute;left:50%;bottom:-7px;width:4px;height:4px;border-radius:50%;transform:translateX(-50%);background:rgba(255,255,255,.92);box-shadow:0 1px 3px rgba(0,0,0,.42)}
 @media(prefers-reduced-motion:reduce){.dock .dock-icon{transition:none!important}.dock .dock-icon.is-open::after{transition:none!important}}
+
+/* Mobile: the Dock is a genuine touch strip, not a clipped row. */
+@media (max-width:768px){
+  .dock{justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x!important;scroll-snap-type:x proximity}
+  .dock::-webkit-scrollbar{display:none}
+  .dock-group,.dock-divider{flex-shrink:0}
+  .dock .dock-icon{scroll-snap-align:center}
+  .traffic{width:42px!important;gap:0!important}
+  .traffic .close{width:32px!important;height:32px!important;min-width:32px!important}
+  .traffic .close::after{content:""!important;inset:auto!important;width:9px!important;height:9px!important;opacity:1!important;background:linear-gradient(45deg,transparent 42%,rgba(0,0,0,.62) 43% 57%,transparent 58%),linear-gradient(-45deg,transparent 42%,rgba(0,0,0,.62) 43% 57%,transparent 58%);font-size:0!important}
+  .window-spacer{width:42px!important}
+}
+
+/* Folder art gives each project window the same clear entry point as the desktop. */
+.window[data-key="cover"] .case-scroll::before,.window[data-key="live"] .v23-live-intro::before,.window[data-key="video"] .v20-live-intro::before{content:"";display:block;width:58px;height:48px;margin:0 0 14px;background:center/contain no-repeat;filter:drop-shadow(0 7px 10px rgba(0,0,0,.24))}
+.window[data-key="cover"] .case-scroll::before{background-image:url("assets/desktop/cover.png")}
+.window[data-key="live"] .v23-live-intro::before{background-image:url("assets/desktop/live.png")}
+.window[data-key="video"] .v20-live-intro::before{background-image:url("assets/desktop/video.png")}
+@media (max-width:768px){.window[data-key="cover"] .case-scroll::before,.window[data-key="live"] .v23-live-intro::before,.window[data-key="video"] .v20-live-intro::before{width:50px;height:42px;margin-bottom:10px}}
+@media (max-width:768px){.desktop-icons{inset:54px 14px calc(82px + env(safe-area-inset-bottom))!important}}
