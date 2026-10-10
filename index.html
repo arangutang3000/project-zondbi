@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#111111">
   <meta name="description" content="ByManjuria — Creative Producer / Content Specialist working across visual design, video, music production and live events.">
+  <meta name="robots" content="index,follow">
   <title>ByManjuria — Creative Producer / Content Specialist · Final</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="v24-mobile.css">
@@ -59,16 +60,12 @@
     <div class="upload-customizer hidden" id="uploadCustomizer" role="dialog" aria-modal="true"><div class="upload-customizer-panel"><div class="customizer-head"><div><div class="kicker">PORTFOLIO MEDIA</div><h2>Upload photos &amp; video</h2></div><button class="customizer-close" id="closeUploadCustomizer">×</button></div><div class="customizer-list" id="uploadCustomizerList"></div><div class="customizer-foot">Permanent project files belong in assets/. Browser uploads are a temporary convenience; keep your master assets/ folder when moving to a new site version.</div></div></div>
     <div class="toast hidden" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
+  <!-- Keep the current content layers only. Older v14–v19 passes were superseded
+       and created duplicate observers, timers, and render functions. -->
   <script src="script.js"></script>
-  <script src="v14-project2.js"></script>
-  <script src="v15-unified.js"></script>
-  <script src="v16-refine.js"></script>
-  <script src="v17-dock-hotfix.js"></script>
-  <script src="v18-layout-pass.js"></script>
-  <script src="v19-final-polish.js"></script>
   <script src="v20-editorial-update.js"></script>
-  <script src="v22-clean-live.js"></script>
   <script src="v23-manual-layout.js"></script>
-<script src="final.js"></script>
+  <script src="final.js"></script>
+  <script src="production.js"></script>
 </body>
 </html>

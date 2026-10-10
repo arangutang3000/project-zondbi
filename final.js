@@ -87,4 +87,17 @@
   };
   updateProjectWidget();
   document.getElementById('langToggle')?.addEventListener('click', () => { updateCredit(); updateProjectWidget(); });
+
+  // Keep the Dock stateful, but deliberately static: magnification made the
+  // low-end/mobile experience janky and is not required for navigation.
+  const dock = document.querySelector('.dock');
+  const dockIcons = [...document.querySelectorAll('.dock .dock-icon')];
+  const updateDockIndicators = () => dockIcons.forEach(icon => {
+    const key = icon.dataset.open;
+    icon.classList.toggle('is-open', Boolean(key && document.querySelector(`.window[data-key="${CSS.escape(key)}"]`)));
+  });
+  if (dock) {
+    updateDockIndicators();
+    new MutationObserver(updateDockIndicators).observe(document.getElementById('windows'), {childList:true});
+  }
 })();

@@ -4,12 +4,12 @@
   const tr = (en, ru) => lang() === 'ru' ? ru : en;
   const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
-  const img = (src, alt='') => `<figure class="v20-media"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" draggable="false" onerror="const f=this.closest('figure');if(f)f.remove()"></figure>`;
+  const img = (src, alt='') => `<figure class="v20-media"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" draggable="false" data-remove-on-error></figure>`;
   const wide = (src, alt='') => `<div class="v20-wide">${img(src, alt)}</div>`;
   const row = (items, cls='') => `<div class="v20-row ${cls}">${items.join('')}</div>`;
   const section = (en, ru) => `<div class="v20-section-title">${tr(en,ru)}</div>`;
-  const soundVideo = (src, label='') => `<div class="v19-ambient v20-video"><video src="${esc(src)}" aria-label="${esc(label)}" autoplay muted loop playsinline preload="metadata"></video><button class="v19-sound" type="button">${tr('SOUND OFF','ЗВУК ВЫКЛ')}</button></div>`;
-  const caseHeader = (title, meta, icon='assets/live/icns.png') => `<header class="v20-case-head"><img class="v20-project-icon" src="${icon}" onerror="this.style.display='none'" alt=""><div><h1>${title}</h1><div class="v20-meta">${meta}</div></div></header>`;
+  const soundVideo = (src, label='') => `<div class="v19-ambient v20-video"><video src="${esc(src)}" aria-label="${esc(label)}" muted loop playsinline preload="metadata"></video><button class="v19-sound" type="button">${tr('SOUND OFF','ЗВУК ВЫКЛ')}</button></div>`;
+  const caseHeader = (title, meta, icon='assets/live/icns.png') => `<header class="v20-case-head"><img class="v20-project-icon" src="${icon}" data-hide-on-error alt=""><div><h1>${title}</h1><div class="v20-meta">${meta}</div></div></header>`;
   const figma = name => `assets/figma-export/offtop-02/${name}`;
 
   window.renderEvents = async function(){
