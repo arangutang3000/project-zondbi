@@ -36,17 +36,17 @@
     const list = Array.isArray(sources) ? sources : [sources];
     const src = list[0] || '';
     const rest = list.slice(1).map(esc).join('|');
-    return `<figure class="v23-cell"><img src="${esc(src)}" data-fallbacks="${rest}" alt="${esc(alt)}" loading="lazy" draggable="false" data-image-fallback></figure>`;
+    return `<figure class="v23-cell"><img src="${esc(src)}" data-fallbacks="${rest}" alt="${esc(alt)}" loading="lazy" draggable="false" onerror="v23MediaError(this)"></figure>`;
   };
   const video = (sources, label='') => {
     const list = Array.isArray(sources) ? sources : [sources];
     const src = list[0] || '';
     const rest = list.slice(1).map(esc).join('|');
-    return `<div class="v23-cell v23-video"><video src="${esc(src)}" data-fallbacks="${rest}" aria-label="${esc(label)}" muted loop playsinline preload="metadata" data-video-fallback></video><button class="v23-sound" type="button">${tr('SOUND OFF','ЗВУК ВЫКЛ')}</button></div>`;
+    return `<div class="v23-cell v23-video"><video src="${esc(src)}" data-fallbacks="${rest}" aria-label="${esc(label)}" autoplay muted loop playsinline preload="metadata" onerror="v23MediaError(this)"></video><button class="v23-sound" type="button">${tr('SOUND OFF','ЗВУК ВЫКЛ')}</button></div>`;
   };
   const row = (items, cls, ratio) => `<div class="v23-row ${cls}" style="aspect-ratio:${ratio}">${items.join('')}</div>`;
   const section = (en,ru) => `<div class="v23-section-title">${tr(en,ru)}</div>`;
-  const caseHeader = (title, meta, icon='assets/live/icns.png') => `<header class="v23-case-head"><img class="v23-project-icon" src="${esc(icon)}" alt="" data-hide-on-error><div><h1>${title}</h1><div class="v23-meta">${meta}</div></div></header>`;
+  const caseHeader = (title, meta, icon='assets/live/icns.png') => `<header class="v23-case-head"><img class="v23-project-icon" src="${esc(icon)}" alt="" onerror="this.style.display='none'"><div><h1>${title}</h1><div class="v23-meta">${meta}</div></div></header>`;
 
   // Optional design exports. If they are not present, their cells disappear without leaving a hole.
   const opt = (folder, name, fallback='') => fallback ? [`${folder}/${name}`, fallback] : `${folder}/${name}`;

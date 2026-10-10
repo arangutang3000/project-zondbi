@@ -8,14 +8,6 @@
     const wrap = video.parentElement;
     wrap.querySelectorAll(legacy).forEach(b => b.remove());
     wrap.classList.add('sound-container');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const syncMotionPreference = () => {
-      if (!reduceMotion.matches) return;
-      video.pause();
-      video.removeAttribute('autoplay');
-    };
-    syncMotionPreference();
-    reduceMotion.addEventListener?.('change', syncMotionPreference);
     const toggle = document.createElement('button');
     toggle.type = 'button'; toggle.className = 'sound-switch';
     toggle.setAttribute('role', 'switch');
@@ -43,21 +35,6 @@
     });
     video.addEventListener('volumechange', sync);
     wrap.appendChild(toggle); sync();
-    const playback = document.createElement('button');
-    playback.type = 'button'; playback.className = 'video-playback';
-    const syncPlayback = () => {
-      const paused = video.paused;
-      playback.textContent = ru() ? (paused ? 'Воспроизвести' : 'Пауза') : (paused ? 'Play' : 'Pause');
-      playback.setAttribute('aria-label', ru() ? (paused ? 'Воспроизвести видео' : 'Поставить видео на паузу') : (paused ? 'Play video' : 'Pause video'));
-    };
-    playback.addEventListener('click', e => {
-      e.preventDefault(); e.stopPropagation();
-      if (video.paused) video.play().catch(() => {}); else video.pause();
-      syncPlayback();
-    });
-    video.addEventListener('play', syncPlayback);
-    video.addEventListener('pause', syncPlayback);
-    wrap.appendChild(playback); syncPlayback();
   }
   function enhance(root) {
     if (root.matches?.('.window video')) setup(root);
@@ -87,17 +64,4 @@
   };
   updateProjectWidget();
   document.getElementById('langToggle')?.addEventListener('click', () => { updateCredit(); updateProjectWidget(); });
-
-  // Keep the Dock stateful, but deliberately static: magnification made the
-  // low-end/mobile experience janky and is not required for navigation.
-  const dock = document.querySelector('.dock');
-  const dockIcons = [...document.querySelectorAll('.dock .dock-icon')];
-  const updateDockIndicators = () => dockIcons.forEach(icon => {
-    const key = icon.dataset.open;
-    icon.classList.toggle('is-open', Boolean(key && document.querySelector(`.window[data-key="${CSS.escape(key)}"]`)));
-  });
-  if (dock) {
-    updateDockIndicators();
-    new MutationObserver(updateDockIndicators).observe(document.getElementById('windows'), {childList:true});
-  }
 })();

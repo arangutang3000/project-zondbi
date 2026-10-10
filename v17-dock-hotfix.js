@@ -4,7 +4,7 @@
     'contact-telegram':'telegram.png',
     'contact-instagram':'instagram.png',
     'contact-mail':'mail.png',
-    'contact-behance':'behance.png',
+    'contact-linkedin':'linkedin.png',
     'photos':'photos.png',
     'notes':'notes.png',
     'photoshop':'photoshop.png',
