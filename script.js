@@ -212,7 +212,7 @@ desktopIcons.querySelectorAll('.desktop-icon').forEach(icon=>{
     pointerId=null;
   };
   handle.addEventListener('pointerup',finish);handle.addEventListener('pointercancel',finish);
-  icon.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;return;}toggleDesktopWindow(icon.dataset.open);});
+  icon.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;return;}toggleWindow(icon.dataset.open);});
 });
 
 // Portfolio media manager. Uploaded media is stored in IndexedDB so large photo/video files do not hit localStorage's tiny quota.
@@ -358,7 +358,7 @@ function applyWindowSize(win,key,data){const s=getWindowSize(key,data),maxW=Math
 function nextWindowPosition(width,height){const topMin=46,topMax=Math.max(topMin,innerHeight-height-72);const leftMax=Math.max(10,innerWidth-width-10);const step=windowCount++;const golden=0.61803398875;const rx=(0.17+((step*golden)%0.66));const ry=(0.10+((step*0.381966)%0.68));return{left:Math.round(Math.max(10,Math.min(leftMax,rx*leftMax))),top:Math.round(Math.max(topMin,Math.min(topMax,topMin+ry*Math.max(1,topMax-topMin))))};}
 
 function closeWindow(win){if(!win||win.classList.contains('closing'))return;win.classList.add('closing');setTimeout(()=>win.remove(),160);}
-function toggleDesktopWindow(key){const existing=[...windows.children].find(w=>w.dataset.key===key);if(existing){closeWindow(existing);return;}openWindow(key);}
+function toggleWindow(key){const existing=[...windows.children].find(w=>w.dataset.key===key);if(existing){closeWindow(existing);return;}openWindow(key);}
 function openWindow(key){appleMenu.classList.add('hidden');const data=content[key];if(!data)return;const existing=[...windows.children].find(w=>w.dataset.key===key);if(existing){focusWindow(existing);return;}const win=document.createElement('section');win.className='window';win.dataset.key=key;win.style.zIndex=++zIndex;windows.appendChild(win);applyWindowSize(win,key,data);const rect=win.getBoundingClientRect();const pos=nextWindowPosition(rect.width,rect.height);win.style.left=`${pos.left}px`;win.style.top=`${pos.top}px`;win.style.transform='translate(0,0) scale(.965)';win.innerHTML=`<div class="window-header"><div class="traffic"><button class="close" title="Close" aria-label="Close"></button><button class="min" title="Minimize" aria-label="Minimize"></button><button class="max" title="Maximize" aria-label="Maximize"></button></div><div class="window-title">${esc(data.title)}</div><div class="window-spacer"></div></div><div class="window-body">Loading…</div>`;
   renderBody(data).then(html=>{const body=win.querySelector('.window-body');if(body){body.innerHTML=html;wireWindowBody(win,data);}}).catch(err=>{const body=win.querySelector('.window-body');if(body){body.innerHTML=`<div class="load-error"><strong>Could not load this section.</strong><p>${esc(err?.message||'Unknown error')}</p></div>`;}});requestAnimationFrame(()=>{win.classList.add('open');win.style.transform='translate(0,0) scale(1)';});makeDraggable(win);win.addEventListener('pointerdown',()=>focusWindow(win));
   win.querySelector('.close').onclick=e=>{e.stopPropagation();closeWindow(win);};
@@ -413,7 +413,7 @@ function setupPhotos(win){win.querySelectorAll('.photos-nav').forEach(b=>b.addEv
 
 // Dock: external links open directly, no internal contact windows.
 const directDockLinks={ 'contact-telegram':links.telegram,'contact-instagram':links.instagram,'contact-mail':links.email,'contact-behance':links.behance };
-document.querySelectorAll('.dock-icon').forEach(icon=>{icon.addEventListener('mouseenter',()=>showDockTooltip(icon));icon.addEventListener('mouseleave',hideDockTooltip);icon.addEventListener('focus',()=>showDockTooltip(icon));icon.addEventListener('blur',hideDockTooltip);icon.addEventListener('click',()=>{const k=icon.dataset.dockKey;if(directDockLinks[k]){if(k==='contact-mail')window.location.href=links.email;else window.open(directDockLinks[k],'_blank','noopener,noreferrer');return;}openWindow(icon.dataset.open);});});
+document.querySelectorAll('.dock-icon').forEach(icon=>{icon.addEventListener('mouseenter',()=>showDockTooltip(icon));icon.addEventListener('mouseleave',hideDockTooltip);icon.addEventListener('focus',()=>showDockTooltip(icon));icon.addEventListener('blur',hideDockTooltip);icon.addEventListener('click',()=>{const k=icon.dataset.dockKey;if(directDockLinks[k]){if(k==='contact-mail')window.location.href=links.email;else window.open(directDockLinks[k],'_blank','noopener,noreferrer');return;}toggleWindow(icon.dataset.open);});});
 function showDockTooltip(icon){hideDockTooltip();dockTooltip=document.createElement('div');dockTooltip.className='dock-tooltip';dockTooltip.textContent=getDockLabel(icon);document.body.appendChild(dockTooltip);const r=icon.getBoundingClientRect(),t=dockTooltip.getBoundingClientRect(),dockRect=icon.closest('.dock')?.getBoundingClientRect();let x=r.left+r.width/2-t.width/2;x=Math.max(6,Math.min(innerWidth-t.width-6,x));let y=(dockRect?.top??r.top)-t.height-12;if(y<4)y=r.bottom+9;dockTooltip.style.left=`${x}px`;dockTooltip.style.top=`${y}px`;requestAnimationFrame(()=>dockTooltip.classList.add('show'));}
 function hideDockTooltip(){if(dockTooltip){dockTooltip.remove();dockTooltip=null;}}
 
