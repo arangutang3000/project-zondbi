@@ -102,7 +102,7 @@
       studio:{title:'ROOM616',html:`<h1>ROOM616</h1><div class="note-meta">3 ${t('YEARS · CENTRAL SAINT-PETERSBURG','ГОДА · ЦЕНТР САНКТ-ПЕТЕРБУРГА')}</div><p>${t('My most sustained professional project: music production, visual content, client work, marketing and operations in one creative business.','Мой самый продолжительный профессиональный проект: музыкальный продакшн, визуальный контент, работа с клиентами, маркетинг и операционное управление в одном креативном бизнесе.')}</p>`},
       skills:{title:t('Skills','Навыки'),html:`<h1>${t('CORE SKILLS','КЛЮЧЕВЫЕ НАВЫКИ')}</h1><div class="note-skill-list">${(lang==='ru'?skillsRU:skillsEN).map(s=>`<span class="role">${s}</span>`).join('')}</div>`},
       education:{title:t('Education','Образование'),html:`<h1>${t('EDUCATION','ОБРАЗОВАНИЕ')}</h1><h2>${t('INFORMATION SYSTEMS AND PROGRAMMING / APPLIED INFORMATICS','ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ПРОГРАММИРОВАНИЕ / ПРИКЛАДНАЯ ИНФОРМАТИКА')}</h2><p>${t('St. Petersburg University of Management Technologies and Economics, 2019–2022. HTML/web layout experience and technical problem solving with modern AI-assisted tools.','Санкт-Петербургский университет технологий управления и экономики, 2019–2022. Опыт HTML-вёрстки и решения технических задач с современными AI-инструментами.')}</p>`},
-      contacts:{title:t('Contacts','Контакты'),html:`<h1>${t('GET IN TOUCH','СВЯЗАТЬСЯ')}</h1><p>${esc19(profile.email)}</p><div class="note-links"><a href="${links.telegram}" target="_blank">Telegram ↗</a><a href="${links.instagram}" target="_blank">Instagram ↗</a><a href="${links.linkedin}" target="_blank">LinkedIn ↗</a><a href="${links.behance}" target="_blank">Behance ↗</a></div>`}
+      contacts:{title:t('Contacts','Контакты'),html:`<h1>${t('GET IN TOUCH','СВЯЗАТЬСЯ')}</h1><p>${esc19(profile.email)}</p><div class="note-links"><a href="${links.telegram}" target="_blank">Telegram ↗</a><a href="${links.instagram}" target="_blank">Instagram ↗</a><a href="${links.behance}" target="_blank">Behance ↗</a></div>`}
     };
   };
 
@@ -144,7 +144,7 @@
     document.querySelectorAll('.desktop-icon').forEach(el=>{const l=el.querySelector(':scope > span:last-child');if(l&&labels[el.dataset.open])l.textContent=labels[el.dataset.open];});
     const menuMap={menuResume:t('Download CV / Resume','Скачать CV / Resume'),changeWallpaper:t('Change Wallpaper…','Сменить обои…'),customizeIcons:t('Change Desktop Images…','Сменить иконки рабочего стола…'),customizeDockIcons:t('Change Dock Icons…','Сменить иконки Dock…'),resetIconPositions:t('Reset folder positions','Сбросить позиции папок'),closeAll:t('Close all windows','Закрыть все окна')};
     Object.entries(menuMap).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v;});
-    const btn=document.getElementById('langToggle');if(btn){btn.textContent=lang.toUpperCase();btn.title=t('Switch language','Сменить язык');}
+    const btn=document.getElementById('langToggle');if(btn){const label=t('Switch language','Сменить язык');btn.textContent=lang.toUpperCase();btn.title=label;btn.setAttribute('aria-label',label);}
     const titleMap={notes:t('NOTES','ЗАМЕТКИ'),photos:t('PHOTOS','ФОТО'),cover:t('COVER','ОБЛОЖКИ'),studio:t('STUDIO','СТУДИЯ'),live:t('EVENT & LIVE','СОБЫТИЯ & LIVE'),video:t('VIDEO','ВИДЕО')};
     Object.entries(titleMap).forEach(([k,v])=>{if(content[k])content[k].title=v;});
   }

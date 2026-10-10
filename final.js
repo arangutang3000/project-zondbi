@@ -8,6 +8,14 @@
     const wrap = video.parentElement;
     wrap.querySelectorAll(legacy).forEach(b => b.remove());
     wrap.classList.add('sound-container');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotionPreference = () => {
+      if (!reduceMotion.matches) return;
+      video.pause();
+      video.removeAttribute('autoplay');
+    };
+    syncMotionPreference();
+    reduceMotion.addEventListener?.('change', syncMotionPreference);
     const toggle = document.createElement('button');
     toggle.type = 'button'; toggle.className = 'sound-switch';
     toggle.setAttribute('role', 'switch');
@@ -35,6 +43,21 @@
     });
     video.addEventListener('volumechange', sync);
     wrap.appendChild(toggle); sync();
+    const playback = document.createElement('button');
+    playback.type = 'button'; playback.className = 'video-playback';
+    const syncPlayback = () => {
+      const paused = video.paused;
+      playback.textContent = ru() ? (paused ? 'Воспроизвести' : 'Пауза') : (paused ? 'Play' : 'Pause');
+      playback.setAttribute('aria-label', ru() ? (paused ? 'Воспроизвести видео' : 'Поставить видео на паузу') : (paused ? 'Play video' : 'Pause video'));
+    };
+    playback.addEventListener('click', e => {
+      e.preventDefault(); e.stopPropagation();
+      if (video.paused) video.play().catch(() => {}); else video.pause();
+      syncPlayback();
+    });
+    video.addEventListener('play', syncPlayback);
+    video.addEventListener('pause', syncPlayback);
+    wrap.appendChild(playback); syncPlayback();
   }
   function enhance(root) {
     if (root.matches?.('.window video')) setup(root);

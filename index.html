@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="color-scheme: dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -38,7 +38,7 @@
         <button class="dock-icon telegram-icon" data-dock-key="contact-telegram" data-label="Telegram" aria-label="Telegram"><span>✈</span></button>
         <button class="dock-icon instagram-icon" data-dock-key="contact-instagram" data-label="Instagram" aria-label="Instagram"><span>◎</span></button>
         <button class="dock-icon mail-icon" data-dock-key="contact-mail" data-label="Email" aria-label="Email"><span>✉</span></button>
-        <button class="dock-icon linkedin-icon" data-dock-key="contact-linkedin" data-label="LinkedIn" aria-label="LinkedIn"><span>in</span></button>
+        <button class="dock-icon behance-icon" data-dock-key="contact-behance" data-label="Behance" aria-label="Behance"><span>Bē</span></button>
       </div><span class="dock-divider"></span><div class="dock-group">
         <button class="dock-icon photos-icon" data-dock-key="photos" data-open="photos" data-label="Photos" aria-label="Photos"><span>✺</span></button>
         <button class="dock-icon notes-icon" data-dock-key="notes" data-open="notes" data-label="CV / Notes" aria-label="CV / Notes"><span>☷</span></button>
@@ -57,7 +57,7 @@
     <div class="icon-customizer hidden" id="iconCustomizer" role="dialog" aria-modal="true"><div class="icon-customizer-panel"><div class="customizer-head"><div><div class="kicker">DESKTOP</div><h2>Change desktop images</h2></div><button class="customizer-close" id="closeIconCustomizer">×</button></div><div class="customizer-list" id="iconCustomizerList"></div><div class="customizer-foot">Default manual assets live in assets/desktop/. Browser changes are saved locally.</div></div></div>
     <div class="dock-customizer hidden" id="dockCustomizer" role="dialog" aria-modal="true"><div class="dock-customizer-panel"><div class="customizer-head"><div><div class="kicker">DOCK</div><h2>Change Dock Icons</h2></div><button class="customizer-close" id="closeDockCustomizer">×</button></div><div class="customizer-list" id="dockCustomizerList"></div><div class="customizer-foot">Dock icons use Apple .icns files. The browser extracts a readable image from the icon.</div></div></div>
     <div class="upload-customizer hidden" id="uploadCustomizer" role="dialog" aria-modal="true"><div class="upload-customizer-panel"><div class="customizer-head"><div><div class="kicker">PORTFOLIO MEDIA</div><h2>Upload photos &amp; video</h2></div><button class="customizer-close" id="closeUploadCustomizer">×</button></div><div class="customizer-list" id="uploadCustomizerList"></div><div class="customizer-foot">Permanent project files belong in assets/. Browser uploads are a temporary convenience; keep your master assets/ folder when moving to a new site version.</div></div></div>
-    <div class="toast hidden" id="toast"></div>
+    <div class="toast hidden" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
   <script src="script.js"></script>
   <script src="v14-project2.js"></script>
