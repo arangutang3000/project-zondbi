@@ -73,7 +73,7 @@ const profile = {
     'FL Studio', 'Recording', 'Music Production', 'Mixing', 'Mastering',
     'Client Communication', 'Project Coordination', 'Event Organization', 'Studio Management',
     'Promotion', 'Advertising', 'AI-assisted Content Creation', 'Marketplace Infographics',
-    'HTML / Web Layout'
+    'Figma', 'Web Design', 'Responsive Design', 'Website Prototyping', 'HTML / Web Layout'
   ]
 };
 

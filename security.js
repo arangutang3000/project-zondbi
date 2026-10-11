@@ -6,7 +6,7 @@
     const pages = originalNotePages();
     pages.services = {
       title: 'Services',
-      html: '<h1>SERVICES</h1><p class="note-lead">AVAILABLE FOR PROJECTS</p><h2>DESIGN × WEB</h2><p>Visual identity and websites for artists and brands.</p><div class="note-links"><a href="mailto:ramenskiy.7777@gmail.com">EMAIL ME ↗</a><a href="https://t.me/manjuria_puff616" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div>'
+      html: '<h1>SERVICES</h1><p class="note-lead">AVAILABLE FOR PROJECTS</p><h2>WEBSITE &amp; DIGITAL DESIGN</h2><p>I design websites and digital experiences for artists, creative projects and brands — from the first visual direction to a finished, responsive website.</p><p>I use Figma to build page structure, visual systems, typography, layouts and prototypes, then turn the approved design into a working site or prepare it clearly for development. The result is a distinctive website that is easy to navigate, works well on mobile and communicates the project’s identity.</p><div class="note-links"><a href="mailto:ramenskiy.7777@gmail.com">EMAIL ME ↗</a><a href="https://t.me/manjuria_puff616" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div>'
     };
     if (pages.contacts?.html) pages.contacts.html = pages.contacts.html.replace(/<a href="undefined"[^>]*>LinkedIn ↗<\/a>/, '');
     return pages;
