@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="v24-mobile.css">
 <link rel="stylesheet" href="final.css">
   <link rel="stylesheet" href="cleaning-project.css">
+  <link rel="stylesheet" href="qa-window.css">
+  <link rel="stylesheet" href="qa-responsive.css">
   <style>
     .desktop-icon[data-open="cleaning"] > span:last-child,
     .window[data-key="cleaning"] .window-title { text-transform: none; }
@@ -26,11 +28,11 @@
       <button class="menu-status" id="dateTime" aria-label="Current date and time">—</button><button class="menu-status lang-toggle" id="langToggle" aria-label="Language">EN</button>
     </header>
     <main class="desktop-icons" id="desktopIcons" aria-label="Portfolio folders">
-      <button class="desktop-icon" data-open="cover" data-position="15,18"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/cover.png" alt="COVER"></span><span>COVER</span></button>
-      <button class="desktop-icon" data-open="studio" data-position="67,61"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/studio.png" alt="STUDIO"></span><span>STUDIO</span></button>
-      <button class="desktop-icon" data-open="live" data-position="18,63"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/live.png" alt="EVENT &amp; LIVE"></span><span>EVENT &amp; LIVE</span></button>
-      <button class="desktop-icon" data-open="video" data-position="82,78"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/video.png" alt="VIDEO"></span><span>VIDEO</span></button>
-      <button class="desktop-icon" data-open="cleaning" data-position="45,37"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/cleaning.png" alt="neatmi"></span><span>neatmi</span></button>
+      <button class="desktop-icon" data-open="cover" data-position="15,18"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/ui-optimized/desktop/cover.png" alt="COVER"></span><span>COVER</span></button>
+      <button class="desktop-icon" data-open="studio" data-position="67,61"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/ui-optimized/desktop/studio.png" alt="STUDIO"></span><span>STUDIO</span></button>
+      <button class="desktop-icon" data-open="live" data-position="18,63"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/ui-optimized/desktop/live.png" alt="EVENT &amp; LIVE"></span><span>EVENT &amp; LIVE</span></button>
+      <button class="desktop-icon" data-open="video" data-position="82,78"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/ui-optimized/desktop/video.png" alt="VIDEO"></span><span>VIDEO</span></button>
+      <button class="desktop-icon" data-open="cleaning" data-position="45,37"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/ui-optimized/desktop/cleaning.png" alt="neatmi"></span><span>neatmi</span></button>
     </main>
     <div class="windows" id="windows"></div>
     <nav class="dock" aria-label="Portfolio applications">
@@ -59,6 +61,7 @@
     <div class="upload-customizer hidden" id="uploadCustomizer" role="dialog" aria-modal="true"><div class="upload-customizer-panel"><div class="customizer-head"><div><div class="kicker">PORTFOLIO MEDIA</div><h2>Upload photos &amp; video</h2></div><button class="customizer-close" id="closeUploadCustomizer">×</button></div><div class="customizer-list" id="uploadCustomizerList"></div><div class="customizer-foot">Permanent project files belong in assets/. Browser uploads are a temporary convenience; keep your master assets/ folder when moving to a new site version.</div></div></div>
     <div class="toast hidden" id="toast"></div>
   </div>
+  <script src="safe-storage.js"></script>
   <script src="script.js"></script>
   <script src="v14-project2.js"></script>
   <script src="v15-unified.js"></script>

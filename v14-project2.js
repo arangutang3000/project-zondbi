@@ -21,6 +21,6 @@
 
   getWindowSize=(key,data)=>data.type==='events'?{width:610,height:780}:data.type==='studio'?{width:610,height:760}:data.type==='videos'?{width:610,height:700}:data.type==='cover'?{width:610,height:720}:data.type==='notes'?{width:980,height:650}:data.type==='photos'?{width:1000,height:650}:data.type==='skill'?{width:560,height:480}:{width:720,height:500};
 
-  document.querySelectorAll('.desktop-icon').forEach(btn=>{const k=btn.dataset.open,img=btn.querySelector('img');if(img&&['cover','studio','live','video'].includes(k))img.src=`assets/desktop/${k}.png`;});
+  document.querySelectorAll('.desktop-icon').forEach(btn=>{const k=btn.dataset.open,img=btn.querySelector('img');if(img&&['cover','studio','live','video'].includes(k))img.src=`assets/ui-optimized/desktop/${k}.png`;});
   document.getElementById('uploadPhotos')?.remove();
 })();

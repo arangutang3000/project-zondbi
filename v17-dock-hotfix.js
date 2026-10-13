@@ -17,7 +17,9 @@
     btn.querySelectorAll(':scope > span').forEach(s=>s.remove());
     let img=btn.querySelector(':scope > img');
     if(!img){img=document.createElement('img');btn.prepend(img);}
-    img.src='dock-fallback/'+file;
+    // Keep the checked-in filename mapping and originals as a one-shot recovery path.
+    img.onerror=()=>{img.onerror=null;img.src='dock-fallback/'+file;};
+    img.src='assets/ui-optimized/dock-fallback/'+file;
     img.alt=btn.getAttribute('aria-label')||'';
     img.draggable=false;
     btn.classList.add('has-real-icon');

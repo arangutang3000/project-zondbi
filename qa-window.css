@@ -1,0 +1,22 @@
+/* Load after all existing styles. Scope to desktop window geometry only;
+   phone positioning and project content retain their existing design. */
+@media (min-width: 769px) {
+  #windows .window[data-key]:not(.maximized) {
+    max-width: var(--qa-work-width) !important;
+    max-height: var(--qa-work-height) !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+  #windows .window[data-key].maximized {
+    left: var(--qa-work-left, 8px) !important;
+    top: var(--qa-work-top, 8px) !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: var(--qa-work-width, calc(100% - 16px)) !important;
+    height: var(--qa-work-height, calc(100% - 16px)) !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+}
