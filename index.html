@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="v24-mobile.css">
 <link rel="stylesheet" href="final.css">
+  <link rel="stylesheet" href="cleaning-project.css">
+  <style>
+    .desktop-icon[data-open="cleaning"] > span:last-child,
+    .window[data-key="cleaning"] .window-title { text-transform: none; }
+  </style>
 </head>
 <body>
   <div class="desktop" id="desktop">
@@ -25,6 +30,7 @@
       <button class="desktop-icon" data-open="studio" data-position="67,61"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/studio.png" alt="STUDIO"></span><span>STUDIO</span></button>
       <button class="desktop-icon" data-open="live" data-position="18,63"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/live.png" alt="EVENT &amp; LIVE"></span><span>EVENT &amp; LIVE</span></button>
       <button class="desktop-icon" data-open="video" data-position="82,78"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/video.png" alt="VIDEO"></span><span>VIDEO</span></button>
+      <button class="desktop-icon" data-open="cleaning" data-position="45,37"><span class="desktop-thumb"><img class="desktop-folder-image" src="assets/desktop/cleaning.png" alt="neatmi"></span><span>neatmi</span></button>
     </main>
     <div class="windows" id="windows"></div>
     <nav class="dock" aria-label="Portfolio applications">
@@ -65,5 +71,6 @@
   <script src="v23-manual-layout.js"></script>
 <script src="final.js"></script>
 <script src="security.js"></script>
+<script src="cleaning-project.js"></script>
 </body>
 </html>

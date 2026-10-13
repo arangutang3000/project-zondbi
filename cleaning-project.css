@@ -1,0 +1,15 @@
+/* Match the editorial project windows without touching the layered legacy CSS. */
+.window[data-key="cleaning"] {background:#1d1d1d;}
+.window[data-key="cleaning"] .window-body {padding:56px 0 0!important;height:100%!important;overflow:hidden!important;background:#1d1d1d!important;}
+.cleaning-case .v23-case-head>div {min-width:0;overflow-wrap:anywhere;}
+.cleaning-status {display:inline-flex;align-items:center;gap:7px;margin:2px 0 4px;padding:6px 10px;border:1px solid #b3a07a66;border-radius:999px;background:#b3a07a12;color:#d8c7a4;font-size:11px;line-height:1.35;}
+.cleaning-status>span {width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
+.cleaning-preview {position:relative;width:100%;margin:0;background:#111;border:1px solid #3b3b3b;border-radius:8px;overflow:hidden;}
+.cleaning-preview video {display:block;width:100%;height:auto;object-fit:contain;background:#111;}
+/* Keep the shared sound switch clear of native playback controls. */
+.cleaning-preview .sound-switch {top:8px;bottom:auto;}
+.cleaning-caption {margin:10px 0 0;color:#a9a9a9;font-size:11px;line-height:1.45;}
+@media(max-width:768px) {
+  .window[data-key="cleaning"] .window-body {padding:54px 0 0!important;}
+  .cleaning-preview .sound-switch {top:5px;bottom:auto;}
+}

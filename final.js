@@ -3,7 +3,7 @@
   const legacy = '.v15-sound,.v16-sound,.v18-sound,.v19-sound,.v23-sound';
   const registered = new WeakSet();
   function setup(video) {
-    if (registered.has(video)) return;
+    if (video.hasAttribute('data-no-audio') || registered.has(video)) return;
     registered.add(video);
     const wrap = video.parentElement;
     wrap.querySelectorAll(legacy).forEach(b => b.remove());
