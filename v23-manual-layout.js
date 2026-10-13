@@ -123,12 +123,8 @@
 
   renderStudio = async function(){
     const s='assets/studio';
-    const pic = n => media([
-      `${s}/studio-photo-${String(n).padStart(2,'0')}.jpg`,
-      `${s}/studio-photo-${String(n).padStart(2,'0')}.JPG`,
-      `${s}/studio-photo-${String(n).padStart(2,'0')}.jpeg`,
-      `${s}/studio-photo-${String(n).padStart(2,'0')}.png`
-    ]);
+    // These six checked-in exports are PNG; do not probe nonexistent JPEG variants.
+    const pic = n => media(`${s}/studio-photo-${String(n).padStart(2,'0')}.png`);
     return `<div class="v23-scroll"><div class="v23-content v23-studio"><article class="v23-case">
       ${caseHeader('ROOM616', `2023 — ${tr('PRESENT','СЕЙЧАС')} · ${tr('CREATIVE PRODUCER / STUDIO MANAGEMENT','КРЕАТИВНЫЙ ПРОДЮСЕР / УПРАВЛЕНИЕ СТУДИЕЙ')}`, 'assets/desktop/studio.png')}
       <div class="v23-studio-lead"><h2>${tr('A RECORDING STUDIO AS A CREATIVE BUSINESS','СТУДИЯ ЗВУКОЗАПИСИ КАК КРЕАТИВНЫЙ БИЗНЕС')}</h2><p>${tr('ROOM616 is the project where most of my disciplines come together. Since 2023, I have been involved in the studio’s day-to-day development: recording and producing artists, visual content and cover art, shooting and editing, promotion, team coordination, hiring sound engineers, studio improvements, events and livestreams.','ROOM616 — проект, в котором сошлось большинство моих направлений. С 2023 года я занимаюсь ежедневным развитием студии: записываю и продюсирую артистов, создаю визуальный контент и обложки, снимаю и монтирую, занимаюсь продвижением, координацией команды, поиском звукорежиссёров, развитием пространства, мероприятиями и трансляциями.')}</p><p>${tr('My role sits between creative production and operations. I can work directly with an artist on a track and its visual identity while also thinking about how the studio itself should function, communicate and grow.','Моя роль находится между креативным продакшном и операционным управлением. Я могу работать с артистом над треком и его визуальной идентичностью и одновременно думать о том, как должна работать, коммуницировать и развиваться сама студия.')}</p></div>
@@ -144,7 +140,7 @@
     const p='assets/photos';
     const pic = n => {
       const nn=String(n).padStart(2,'0');
-      return media([`${p}/photo-${nn}.jpg`,`${p}/photo-${nn}.JPG`,`${p}/photo-${nn}.jpeg`,`${p}/photo-${nn}.png`],`${tr('Photo','Фото')} ${n}`);
+      return media(`${p}/photo-${nn}.png`,`${tr('Photo','Фото')} ${n}`);
     };
     return `<div class="v23-scroll"><div class="v23-content v23-photos"><article class="v23-case">
       ${caseHeader(tr('PHOTOS','ФОТО'), tr('LIFESTYLE / ARCHIVE','LIFESTYLE / АРХИВ'), 'dock-fallback/photos.png')}

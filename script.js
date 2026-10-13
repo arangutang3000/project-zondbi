@@ -62,7 +62,7 @@ const profile = {
   about: `I create visual and audio content for music, artists, events and brands. My work includes cover art, posters, menus, merchandise, short-form content, music videos, recording, mixing and music production. I work confidently in Photoshop and Premiere Pro and have around eight years of experience with FL Studio.\n\nFor the last three years I have also been running and developing ROOM616, a recording studio in central Saint-Petersburg. I worked with clients and artists, produced music, created content and visuals, managed the studio, handled budgets and promotion, hired sound engineers, organized events and took part in live productions.\n\nMy background is broader than creative production: I studied software engineering, have basic HTML layout experience, worked in procurement and sales, and have experience creating marketplace product cards with AI tools. This combination helps me understand both the creative side of a project and the practical work needed to take an idea to a finished result.`,
   education: 'Information Systems and Programming / Applied Informatics — St. Petersburg University of Management Technologies and Economics, 2019–2022.',
   experience: [
-    {role:'Sound Producer / SMM Specialist / Designer / Video Editor', company:'ROOM616', period:'Oct 2023 — Sep 2026'},
+    {role:'Sound Producer / SMM Specialist / Designer / Video Editor', company:'ROOM616', period:'Oct 2023 — Present'},
     {role:'Logistics Specialist', company:'Yandex Lavka', period:'Nov 2025 — Aug 2026'},
     {role:'Purchasing Manager', company:'ProService', period:'Apr 2022 — Nov 2024'}
   ],
@@ -212,7 +212,7 @@ desktopIcons.querySelectorAll('.desktop-icon').forEach(icon=>{
     pointerId=null;
   };
   handle.addEventListener('pointerup',finish);handle.addEventListener('pointercancel',finish);
-  icon.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;return;}openWindow(icon.dataset.open);});
+  icon.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;return;}openWindow(icon.dataset.open,icon);});
 });
 
 // Portfolio media manager. Uploaded media is stored in IndexedDB so large photo/video files do not hit localStorage's tiny quota.
@@ -324,13 +324,17 @@ async function renderPhotos(){const uploads=await getUploadedFor('photos');const
 function renderNotes(){return `<div class="notes-app"><aside class="notes-sidebar"><div class="notes-folder">Notes</div><div class="notes-section-label">ON MY MAC</div>${['Overview','Services','Experience','Studio','Skills','Education','Contacts'].map((x,i)=>`<button class="note-item ${i===0?'active':''}" data-note="${x.toLowerCase()}"><span class="note-dot"></span>${x}</button>`).join('')}</aside><div class="notes-content" id="notesContent"></div></div>`;}
 function notePages(){return {
   overview:{title:'Overview',html:`<div class="note-meta">BYMANJURIA · CV / RESUME</div><h1>${profile.name}</h1><p class="note-lead">${esc(profile.role)}</p><p>${esc(profile.summary)}</p><div class="note-links"><a href="${links.resume}" download="ByManjuria-CV.pdf" target="_blank">DOWNLOAD CV ↓</a><a href="${links.behance}" target="_blank">Behance ↗</a><a href="${links.youtube}" target="_blank">YouTube ↗</a></div>`},
-  experience:{title:'Experience',html:`<h1>Experience</h1><h2>ROOM616 — Sound Producer / SMM Specialist / Designer / Video Editor</h2><div class="note-meta">Oct 2023 — Sep 2026 · Saint-Petersburg</div><ul><li>Recording sessions and full audio post-production: editing, mixing and mastering.</li><li>Studio equipment and software setup and maintenance.</li><li>Collaboration with artists on creative projects.</li><li>Copywriting, video shooting and editing, Stories and layouts.</li><li>Graphic design: advertising banners, product cards, merchandise, price lists and cover art.</li><li>Social media visuals: feed, Highlights and profile design.</li><li>Promo and backstage video production, including artist interviews.</li><li>Advanced video editing: beat-synced cuts, colour grading, sound design and audio processing.</li></ul><h2>Purchasing Manager — ProService</h2><div class="note-meta">Apr 2022 — Nov 2024</div><p>Procurement of spare parts and components, supplier negotiations, purchasing, order management, delivery scheduling, documentation and supplier selection based on cost, quality and lead times.</p><h2>Logistics Specialist — Yandex Lavka</h2><div class="note-meta">Nov 2025 — Aug 2026</div><p>Documentation flow, transport routes and shipping methods, warehouse management and order fulfilment.</p>`},
+  experience:{title:'Experience',html:`<h1>Experience</h1><h2>ROOM616 — Sound Producer / SMM Specialist / Designer / Video Editor</h2><div class="note-meta">Oct 2023 — Present · Saint-Petersburg</div><ul><li>Recording sessions and full audio post-production: editing, mixing and mastering.</li><li>Studio equipment and software setup and maintenance.</li><li>Collaboration with artists on creative projects.</li><li>Copywriting, video shooting and editing, Stories and layouts.</li><li>Graphic design: advertising banners, product cards, merchandise, price lists and cover art.</li><li>Social media visuals: feed, Highlights and profile design.</li><li>Promo and backstage video production, including artist interviews.</li><li>Advanced video editing: beat-synced cuts, colour grading, sound design and audio processing.</li></ul><h2>Purchasing Manager — ProService</h2><div class="note-meta">Apr 2022 — Nov 2024</div><p>Procurement of spare parts and components, supplier negotiations, purchasing, order management, delivery scheduling, documentation and supplier selection based on cost, quality and lead times.</p><h2>Logistics Specialist — Yandex Lavka</h2><div class="note-meta">Nov 2025 — Aug 2026</div><p>Documentation flow, transport routes and shipping methods, warehouse management and order fulfilment.</p>`},
   studio:{title:'Studio',html:`<h1>ROOM616</h1><div class="note-meta">3 years · central Saint-Petersburg</div><p>My most sustained professional project. I combined music production, visual content, client work, marketing and operations rather than working in only one creative discipline.</p><ul><li>Recording, production, mixing and mastering</li><li>Artist development and content creation</li><li>Cover art and visual materials</li><li>Promotion, targeted advertising and paid placements</li><li>Budget and team management</li><li>Event organization and livestreams</li></ul>`},
   skills:{title:'Skills',html:`<h1>Skills</h1><div class="note-skill-list">${profile.skills.map(s=>`<span class="role">${esc(s)}</span>`).join('')}</div><h2>Resume keywords</h2><div class="note-skill-list">${['Document Management','Social Media Marketing','Digital & AI Proficiency','Systems Analysis and Design','Internal Communication','Team Collaboration','Communication','Time Management','Adaptability','Attention to Detail','Problem Solving','Creative Thinking','Stress Resistance'].map(s=>`<span class="role">${s}</span>`).join('')}</div>`},
   education:{title:'Education',html:`<h1>Education</h1><h2>Software Engineering</h2><p>College education in software engineering. During college I created websites with HTML and worked with web layout. I do not position myself as a programmer, but I am comfortable researching technical problems and using AI-assisted tools to build and adapt working solutions.</p>`},
   contacts:{title:'Contacts',html:`<h1>Get in touch</h1><p>${esc(profile.email)}</p><div class="note-links"><a href="${links.telegram}" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="${links.instagram}" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="${links.behance}" target="_blank" rel="noopener noreferrer">Behance ↗</a></div>`}
 };}
-function activateNotes(win,key='overview'){const pages=notePages(),contentEl=win.querySelector('#notesContent');if(!contentEl)return;contentEl.innerHTML=pages[key]?.html||pages.overview.html;win.querySelectorAll('.note-item').forEach(b=>{b.classList.toggle('active',b.dataset.note===key);b.onclick=()=>activateNotes(win,b.dataset.note);});}
+function servicesNotePage(){
+  const ru=document.documentElement.lang==='ru',t=(en,translated)=>ru?translated:en;
+  return {title:t('Services','Услуги'),html:`<h1>${t('SERVICES','УСЛУГИ')}</h1><p class="note-lead">${t('AVAILABLE FOR PROJECTS','ОТКРЫТ ДЛЯ ПРОЕКТОВ')}</p><h2>${t('WEBSITE &amp; DIGITAL DESIGN','ДИЗАЙН САЙТОВ И ЦИФРОВЫХ ПРОЕКТОВ')}</h2><p>${t('I design websites and digital experiences for artists, creative projects and brands — from the first visual direction to a finished, responsive website.','Я создаю сайты и цифровые проекты для артистов, творческих проектов и брендов — от первого визуального направления до готового адаптивного сайта.')}</p><p>${t('I use Figma to build page structure, visual systems, typography, layouts and prototypes, then turn the approved design into a working site or prepare it clearly for development. The result is a distinctive website that is easy to navigate, works well on mobile and communicates the project’s identity.','В Figma я разрабатываю структуру страниц, визуальные системы, типографику, макеты и прототипы, затем превращаю утверждённый дизайн в работающий сайт или готовлю его для разработки. Результат — узнаваемый сайт с понятной навигацией, удобный на мобильных устройствах и передающий характер проекта.')}</p><div class="note-links"><a href="${links.email}">${t('EMAIL ME ↗','НАПИСАТЬ НА ПОЧТУ ↗')}</a><a href="${links.telegram}" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div>`};
+}
+function activateNotes(win,key=win.dataset.noteKey||'overview'){const pages=notePages(),contentEl=win.querySelector('#notesContent');if(!contentEl)return;pages.services=servicesNotePage();if(!pages[key])key='overview';win.dataset.noteKey=key;contentEl.innerHTML=pages[key].html;contentEl.scrollTop=0;win.querySelectorAll('.note-item').forEach(b=>{b.classList.toggle('active',b.dataset.note===key);b.onclick=()=>activateNotes(win,b.dataset.note);});}
 
 function renderAbout(){return `<div class="about"><div class="kicker">${esc(profile.role)}</div><h1>ByManjuria</h1><p class="lead">${esc(profile.summary)}</p><div class="about-copy">${profile.about.split('\n\n').map(p=>`<p>${esc(p)}</p>`).join('')}</div><div class="stats"><div class="stat"><strong>3+</strong><span>years running ROOM616</span></div><div class="stat"><strong>8</strong><span>years with FL Studio</span></div><div class="stat"><strong>2026</strong><span>current portfolio</span></div></div><a class="cta" href="#" data-open-notes>OPEN CV →</a></div>`;}
 function renderSkill(data){return `<div class="app-skill"><div><div class="app-logo">${esc(data.short)}</div><div class="kicker">APPLICATION / SKILL</div><h1>${esc(data.title)}</h1><div class="years">${esc(data.years)}</div><div class="role-list" style="justify-content:center;max-width:620px;margin:22px auto 0">${data.skills.map(s=>`<span class="role">${esc(s)}</span>`).join('')}</div></div></div>`;}
@@ -354,14 +358,60 @@ function getWindowSize(key,data){
   if(data.type==='skill')return{width:560,height:480};
   return{width:720,height:500};
 }
-function applyWindowSize(win,key,data){const s=getWindowSize(key,data),maxW=Math.max(320,innerWidth-24),maxH=Math.max(260,innerHeight-108);win.style.width=`${Math.min(s.width,maxW)}px`;win.style.height=`${Math.min(s.height,maxH)}px`;}
+function windowWorkspace(){
+  const parent=windows.getBoundingClientRect(),dock=document.querySelector('.dock')?.getBoundingClientRect(),menu=document.querySelector('.menubar')?.getBoundingClientRect();
+  const left=Math.max(0,parent.left)+8,top=Math.max(0,parent.top,menu?.bottom||0)+8;
+  const right=Math.min(innerWidth,parent.right)-8,bottom=Math.min(innerHeight,parent.bottom,dock?.top||innerHeight)-8;
+  const bounds={left:left-parent.left,top:top-parent.top,width:Math.max(1,right-left),height:Math.max(1,bottom-top)};
+  for(const [key,value] of Object.entries(bounds))windows.style.setProperty(`--qa-work-${key}`,`${value}px`);
+  return bounds;
+}
+function clampWindowPosition(win){
+  const bounds=windowWorkspace();
+  if(matchMedia('(max-width:768px)').matches||win.classList.contains('maximized'))return;
+  const left=parseFloat(win.style.left)||bounds.left,top=parseFloat(win.style.top)||bounds.top;
+  win.style.left=`${Math.max(bounds.left,Math.min(bounds.left+bounds.width-win.offsetWidth,left))}px`;
+  win.style.top=`${Math.max(bounds.top,Math.min(bounds.top+bounds.height-win.offsetHeight,top))}px`;
+}
+function applyWindowSize(win,key,data){const s=getWindowSize(key,data),bounds=windowWorkspace();win.style.width=`${Math.min(s.width,bounds.width)}px`;win.style.height=`${Math.min(s.height,bounds.height)}px`;}
 function nextWindowPosition(width,height){const topMin=46,topMax=Math.max(topMin,innerHeight-height-72);const leftMax=Math.max(10,innerWidth-width-10);const step=windowCount++;const golden=0.61803398875;const rx=(0.17+((step*golden)%0.66));const ry=(0.10+((step*0.381966)%0.68));return{left:Math.round(Math.max(10,Math.min(leftMax,rx*leftMax))),top:Math.round(Math.max(topMin,Math.min(topMax,topMin+ry*Math.max(1,topMax-topMin))))};}
 
-function openWindow(key){appleMenu.classList.add('hidden');const data=content[key];if(!data)return;const existing=[...windows.children].find(w=>w.dataset.key===key);if(existing){existing.classList.add('closing');setTimeout(()=>existing.remove(),160);return;}const win=document.createElement('section');win.className='window';win.dataset.key=key;win.style.zIndex=++zIndex;windows.appendChild(win);applyWindowSize(win,key,data);const rect=win.getBoundingClientRect();const pos=nextWindowPosition(rect.width,rect.height);win.style.left=`${pos.left}px`;win.style.top=`${pos.top}px`;win.style.transform='translate(0,0) scale(.965)';win.innerHTML=`<div class="window-header"><div class="traffic"><button class="close" title="Close" aria-label="Close"></button><button class="min" title="Minimize" aria-label="Minimize"></button><button class="max" title="Maximize" aria-label="Maximize"></button></div><div class="window-title">${esc(data.title)}</div><div class="window-spacer"></div></div><div class="window-body">Loading…</div>`;
-  renderBody(data).then(html=>{const body=win.querySelector('.window-body');if(body){body.innerHTML=html;wireWindowBody(win,data);}}).catch(err=>{const body=win.querySelector('.window-body');if(body){body.innerHTML=`<div class="load-error"><strong>Could not load this section.</strong><p>${esc(err?.message||'Unknown error')}</p></div>`;}});requestAnimationFrame(()=>{win.classList.add('open');win.style.transform='translate(0,0) scale(1)';});makeDraggable(win);win.addEventListener('pointerdown',()=>focusWindow(win));
-  win.querySelector('.close').onclick=e=>{e.stopPropagation();win.classList.add('closing');setTimeout(()=>win.remove(),160);};
-  win.querySelector('.min').onclick=e=>{e.stopPropagation();win.classList.add('minimized');};
-  win.querySelector('.max').onclick=e=>{e.stopPropagation();win.classList.toggle('maximized');if(win.classList.contains('maximized')){win.dataset.restoreLeft=win.style.left;win.dataset.restoreTop=win.style.top;win.dataset.restoreWidth=win.style.width;win.dataset.restoreHeight=win.style.height;}else{win.style.left=win.dataset.restoreLeft||win.style.left;win.style.top=win.dataset.restoreTop||win.style.top;win.style.width=win.dataset.restoreWidth||win.style.width;win.style.height=win.dataset.restoreHeight||win.style.height;}};
+// Suspend before hiding: CSS visibility does not stop media playback.
+function suspendWindowMedia(win){
+  win.querySelectorAll('video,audio').forEach(media=>{media.dataset.resumePlayback=String(!media.paused);media.pause();media.muted=true;});
+  win.querySelectorAll('iframe').forEach(frame=>{if(frame.getAttribute('src')!=='about:blank'){frame.dataset.suspendedSrc=frame.getAttribute('src')||'';frame.src='about:blank';}});
+}
+function restoreWindowMedia(win){
+  win.querySelectorAll('video,audio').forEach(media=>{const resume=media.dataset.resumePlayback==='true';delete media.dataset.resumePlayback;media.muted=true;if(resume)media.play().catch(()=>{});});
+  win.querySelectorAll('iframe[data-suspended-src]').forEach(frame=>{const src=frame.dataset.suspendedSrc;delete frame.dataset.suspendedSrc;const url=new URL(src,location.href);if(/(^|\.)youtube(-nocookie)?\.com$/.test(url.hostname)){url.searchParams.set('autoplay','0');url.searchParams.set('mute','1');}frame.src=url.href;});
+}
+async function renderWindowBody(win,data,preserveScroll=false){
+  const version=win._renderVersion=(win._renderVersion||0)+1,body=win.querySelector('.window-body');
+  if(!body)return null;
+  const noteScroll=preserveScroll?(win.querySelector('.notes-content')?.scrollTop||0):0,bodyScroll=preserveScroll?body.scrollTop:0;
+  try{
+    const html=await renderBody(data);
+    if(!win.isConnected||win.classList.contains('closing')||win._renderVersion!==version)return null;
+    suspendWindowMedia(win);body.innerHTML=html;wireWindowBody(win,data);
+    const notes=win.querySelector('.notes-content');if(notes)notes.scrollTop=noteScroll;body.scrollTop=bodyScroll;
+    if(win.classList.contains('minimized'))suspendWindowMedia(win);
+    return body;
+  }catch(err){
+    if(win.isConnected&&!win.classList.contains('closing')&&win._renderVersion===version)body.innerHTML=`<div class="load-error"><strong>Could not load this section.</strong><p>${esc(err?.message||'Unknown error')}</p></div>`;
+    return null;
+  }
+}
+function closeWindow(win,animate=true,returnFocus=true){
+  win.classList.add('closing');
+  suspendWindowMedia(win);
+  if(returnFocus){const launcher=win._launcher?.isConnected?win._launcher:document.querySelector(`[data-open="${win.dataset.key}"]`);launcher?.focus({preventScroll:true});}
+  if(animate)setTimeout(()=>win.remove(),160);else win.remove();
+}
+function openWindow(key,launcher=document.activeElement){appleMenu.classList.add('hidden');const data=content[key];if(!data)return;const existing=[...windows.children].find(w=>w.dataset.key===key);if(existing){if(existing.classList.contains('minimized')){focusWindow(existing);existing.focus({preventScroll:true});return existing;}closeWindow(existing);return;}const win=document.createElement('section');win.className='window';win.dataset.key=key;win.tabIndex=-1;win.setAttribute('role','region');win.setAttribute('aria-labelledby',`window-title-${key}`);win._launcher=launcher?.matches?.('button,a,[tabindex]')?launcher:document.querySelector(`[data-open="${key}"]`);win.style.zIndex=++zIndex;windows.appendChild(win);applyWindowSize(win,key,data);const rect=win.getBoundingClientRect();const pos=nextWindowPosition(rect.width,rect.height);win.style.left=`${pos.left}px`;win.style.top=`${pos.top}px`;win.style.transform='translate(0,0) scale(.965)';win.innerHTML=`<div class="window-header"><div class="traffic"><button class="close" title="Close" aria-label="Close"></button><button class="min" title="Minimize" aria-label="Minimize"></button><button class="max" title="Maximize" aria-label="Maximize"></button></div><div class="window-title" id="window-title-${key}">${esc(data.title)}</div><div class="window-spacer"></div></div><div class="window-body">Loading…</div>`;
+  renderWindowBody(win,data);requestAnimationFrame(()=>{win.classList.add('open');win.style.transform='translate(0,0) scale(1)';win.focus({preventScroll:true});});makeDraggable(win);win.addEventListener('pointerdown',()=>focusWindow(win));
+  win.querySelector('.close').onclick=e=>{e.stopPropagation();closeWindow(win);};
+  win.querySelector('.min').onclick=e=>{e.stopPropagation();suspendWindowMedia(win);win.classList.add('minimized');};
+  win.querySelector('.max').onclick=e=>{e.stopPropagation();windowWorkspace();win.classList.toggle('maximized');if(win.classList.contains('maximized')){win.dataset.restoreLeft=win.style.left;win.dataset.restoreTop=win.style.top;win.dataset.restoreWidth=win.style.width;win.dataset.restoreHeight=win.style.height;}else{win.style.left=win.dataset.restoreLeft||win.style.left;win.style.top=win.dataset.restoreTop||win.style.top;win.style.width=win.dataset.restoreWidth||win.style.width;win.style.height=win.dataset.restoreHeight||win.style.height;clampWindowPosition(win);}};
   return win;
 }
 function wireWindowBody(win,data){
@@ -380,11 +430,12 @@ function setupCaseNavigation(win){
   scroll.addEventListener('scroll',update,{passive:true}); requestAnimationFrame(update);
 }
 window.openWindow=openWindow;
-function focusWindow(win){win.classList.remove('minimized','closing');win.classList.add('open');win.style.zIndex=++zIndex;}
+function focusWindow(win){const minimized=win.classList.contains('minimized');win.classList.remove('minimized','closing');win.classList.add('open');win.style.zIndex=++zIndex;if(minimized)restoreWindowMedia(win);}
 function makeDraggable(win){
   const header=win.querySelector('.window-header'); if(!header)return;
   let dragging=false,pointerId=null,offsetX=0,offsetY=0;
   header.addEventListener('pointerdown',e=>{
+    if(e.button===0)focusWindow(win);
     if(e.button!==0||win.classList.contains('maximized')||matchMedia('(max-width:768px)').matches||e.pointerType==='touch')return;
     if(e.target.closest('.traffic,button,a,input,textarea,select'))return;
     dragging=true;pointerId=e.pointerId;
@@ -411,8 +462,8 @@ function setupPhotos(win){win.querySelectorAll('.photos-nav').forEach(b=>b.addEv
 
 // Dock: external links open directly, no internal contact windows.
 const directDockLinks={ 'contact-telegram':links.telegram,'contact-instagram':links.instagram,'contact-mail':links.email,'contact-behance':links.behance };
-document.querySelectorAll('.dock-icon').forEach(icon=>{icon.addEventListener('mouseenter',()=>showDockTooltip(icon));icon.addEventListener('mouseleave',hideDockTooltip);icon.addEventListener('focus',()=>showDockTooltip(icon));icon.addEventListener('blur',hideDockTooltip);icon.addEventListener('click',()=>{const k=icon.dataset.dockKey;if(directDockLinks[k]){if(k==='contact-mail')window.location.href=links.email;else window.open(directDockLinks[k],'_blank','noopener,noreferrer');return;}openWindow(icon.dataset.open);});});
-function showDockTooltip(icon){hideDockTooltip();dockTooltip=document.createElement('div');dockTooltip.className='dock-tooltip';dockTooltip.textContent=getDockLabel(icon);document.body.appendChild(dockTooltip);const r=icon.getBoundingClientRect(),t=dockTooltip.getBoundingClientRect();let x=r.left+r.width/2-t.width/2;x=Math.max(6,Math.min(innerWidth-t.width-6,x));let y=r.top-t.height-9;if(y<4)y=r.bottom+9;dockTooltip.style.left=`${x}px`;dockTooltip.style.top=`${y}px`;requestAnimationFrame(()=>dockTooltip.classList.add('show'));}
+document.querySelectorAll('.dock-icon').forEach(icon=>{icon.addEventListener('mouseenter',()=>showDockTooltip(icon));icon.addEventListener('mouseleave',hideDockTooltip);icon.addEventListener('focus',()=>showDockTooltip(icon));icon.addEventListener('blur',hideDockTooltip);icon.addEventListener('click',()=>{const k=icon.dataset.dockKey;if(directDockLinks[k]){if(k==='contact-mail')window.location.href=links.email;else window.open(directDockLinks[k],'_blank','noopener,noreferrer');return;}openWindow(icon.dataset.open,icon);});});
+function showDockTooltip(icon){hideDockTooltip();dockTooltip=document.createElement('div');dockTooltip.className='dock-tooltip';dockTooltip.textContent=getDockLabel(icon);document.body.appendChild(dockTooltip);const r=icon.getBoundingClientRect(),t=dockTooltip.getBoundingClientRect();let x=r.left+r.width/2-t.width/2;x=Math.max(6,Math.min(innerWidth-t.width-6,x));let y=r.top-t.height-9;if(y<4)y=r.bottom+9;dockTooltip.style.left=`${x}px`;dockTooltip.style.top=`${y}px`;const tooltip=dockTooltip;requestAnimationFrame(()=>{if(tooltip.isConnected)tooltip.classList.add('show');});}
 function hideDockTooltip(){if(dockTooltip){dockTooltip.remove();dockTooltip=null;}}
 
 // Menubar / Apple menu
@@ -420,12 +471,12 @@ function updateClock(){const lg=localStorage.getItem('bymanjuria-lang')==='ru'?'
 updateClock();setInterval(updateClock,1000);
 document.getElementById('dateTime').addEventListener('click',e=>e.preventDefault());
 document.getElementById('appleBtn').addEventListener('click',e=>{e.stopPropagation();appleMenu.classList.toggle('hidden');});document.getElementById('nameBtn').textContent=profile.displayName;document.getElementById('nameBtn').addEventListener('click',()=>openWindow('notes'));
-document.getElementById('menuResume').addEventListener('click',()=>{appleMenu.classList.add('hidden');const a=document.createElement('a');a.href=links.resume;a.download='ByManjuria-CV.pdf';a.target='_blank';a.rel='noreferrer';document.body.appendChild(a);a.click();a.remove();});document.getElementById('changeWallpaper').addEventListener('click',()=>{appleMenu.classList.add('hidden');chooseWallpaper();});document.getElementById('customizeIcons').addEventListener('click',()=>{appleMenu.classList.add('hidden');openIconCustomizer();});document.getElementById('resetIconPositions').addEventListener('click',()=>{resetDesktopIconPositions();appleMenu.classList.add('hidden');});document.getElementById('closeAll').addEventListener('click',()=>{windows.innerHTML='';appleMenu.classList.add('hidden');});document.addEventListener('click',e=>{if(!appleMenu.contains(e.target)&&e.target.id!=='appleBtn')appleMenu.classList.add('hidden');});
+document.getElementById('menuResume').addEventListener('click',()=>{appleMenu.classList.add('hidden');const a=document.createElement('a');a.href=links.resume;a.download='ByManjuria-CV.pdf';a.target='_blank';a.rel='noreferrer';document.body.appendChild(a);a.click();a.remove();});document.getElementById('changeWallpaper').addEventListener('click',()=>{appleMenu.classList.add('hidden');chooseWallpaper();});document.getElementById('customizeIcons').addEventListener('click',()=>{appleMenu.classList.add('hidden');openIconCustomizer();});document.getElementById('resetIconPositions').addEventListener('click',()=>{resetDesktopIconPositions();appleMenu.classList.add('hidden');});document.getElementById('closeAll').addEventListener('click',()=>{[...windows.children].forEach(win=>closeWindow(win,false,false));document.getElementById('appleBtn').focus({preventScroll:true});appleMenu.classList.add('hidden');});document.addEventListener('click',e=>{if(!appleMenu.contains(e.target)&&e.target.id!=='appleBtn')appleMenu.classList.add('hidden');});
 
 // Do not wait for every large video and external embed before showing the
 // portfolio. Those resources can continue loading after the interface is ready.
 document.addEventListener('DOMContentLoaded',()=>setTimeout(()=>bootScreen?.classList.add('is-hidden'),900));
-window.addEventListener('resize',()=>{hideDockTooltip();[...windows.children].forEach(w=>{const data=content[w.dataset.key];if(data&&!w.classList.contains('maximized'))applyWindowSize(w,w.dataset.key,data);});});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){const open=[...windows.children].filter(w=>!w.classList.contains('minimized')).sort((a,b)=>Number(b.style.zIndex)-Number(a.style.zIndex))[0];if(open)open.remove();}});
+window.addEventListener('resize',()=>{hideDockTooltip();windowWorkspace();[...windows.children].forEach(w=>{const data=content[w.dataset.key];if(data&&!w.classList.contains('maximized')){applyWindowSize(w,w.dataset.key,data);clampWindowPosition(w);}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const open=[...windows.children].filter(w=>!w.classList.contains('minimized')&&!w.classList.contains('closing')).sort((a,b)=>Number(b.style.zIndex)-Number(a.style.zIndex))[0];if(open)closeWindow(open,false);}});
 
 setDesktopIconPositions();setupIconImages();restoreIconImages();restoreDockImages();restoreWallpaper();migrateLegacySlots();

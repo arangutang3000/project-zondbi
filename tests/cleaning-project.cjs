@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
     assert.equal(await folder.count(), 1, 'neatmi desktop folder must be integrated');
     assert.equal((await folder.innerText()).trim(), 'neatmi');
     assert.equal(await folder.locator('img').getAttribute('alt'), 'neatmi');
-    assert.equal(await folder.locator('img').getAttribute('src'), 'assets/desktop/cleaning.png');
+    assert.equal(await folder.locator('img').getAttribute('src'), 'assets/ui-optimized/desktop/cleaning.png');
     await folder.click();
     const win = page.locator('.window[data-key="cleaning"]');
     async function assertSilentPlayback(stage) {
