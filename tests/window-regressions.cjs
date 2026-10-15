@@ -177,7 +177,7 @@ cases.ROOM616 = async ({page, open, win}) => {
   assert.equal(await page.evaluate(()=>profile.experience.find(e=>e.company==='ROOM616').period), 'Oct 2023 — Present', 'source profile reflects confirmed current employment');
   const source=fs.readFileSync(path.join(root,'script.js'),'utf8');
   assert.ok(!source.includes('Oct 2023 — Sep 2026'), 'fallback Notes no obsolete end date');
-  const polish=fs.readFileSync(path.join(root,'v19-final-polish.js'),'utf8');
+  const polish=fs.readFileSync(path.join(root,'archive/releases/v19-final-polish.js'),'utf8');
   assert.ok(polish.includes('OCT 2023 — PRESENT') && polish.includes('ОКТ 2023 — ПО НАСТОЯЩЕЕ ВРЕМЯ'), 'v19 fallback dates EN/RU');
   await open('notes'); await win('notes').locator('[data-note="experience"]').click();
   assert.match(await win('notes').locator('.notes-content').innerText(), /2023.*PRESENT/);

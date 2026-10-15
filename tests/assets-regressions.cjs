@@ -15,8 +15,9 @@ const mime = {'.js':'text/javascript','.html':'text/html','.css':'text/css','.pn
 const server = http.createServer((req,res)=>{
   let name = decodeURIComponent(new URL(req.url,'http://local').pathname).slice(1) || 'index.html';
   try {
-    let body = baseline && ['index.html','v14-project2.js','v17-dock-hotfix.js','v23-manual-layout.js'].includes(name) ? original(name) : fs.readFileSync(path.join(root,name));
-    if (name==='v14-project2.js' && !baseline && integrationPreview) body=Buffer.from(body.toString().replace('img.src=`assets/desktop/${k}.png`','img.src=`assets/ui-optimized/desktop/${k}.png`'));
+    const release = name.replace(/^archive\/releases\//, '');
+    let body = baseline && ['index.html','v14-project2.js','v17-dock-hotfix.js','v23-manual-layout.js'].includes(release) ? original(release) : fs.readFileSync(path.join(root,name));
+    if (release==='v14-project2.js' && !baseline && integrationPreview) body=Buffer.from(body.toString().replace('img.src=`assets/desktop/${k}.png`','img.src=`assets/ui-optimized/desktop/${k}.png`'));
     if (name==='index.html' && !baseline) {
       let html=body.toString();
       if(fs.existsSync(path.join(root,'safe-storage.js')) && !html.includes('src="safe-storage.js"')) html=html.replace('<script src="script.js">','<script src="safe-storage.js"></script><script src="script.js">');
