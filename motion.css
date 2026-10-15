@@ -1,0 +1,32 @@
+/* Window motion is intentionally limited to transform and opacity.
+   It restores the OS-like response without changing the desktop layout. */
+.window {
+  transform-origin: center center;
+  transition:
+    opacity 220ms cubic-bezier(.23, 1, .32, 1) !important,
+    transform 220ms cubic-bezier(.23, 1, .32, 1) !important;
+}
+
+.window.open {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+.window.closing {
+  opacity: 0;
+  transform: translate(0, 4px) scale(.985) !important;
+}
+
+.window.dragging,
+.window.maximized {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window,
+  .window.open,
+  .window.closing {
+    transition: none !important;
+    transform: none !important;
+  }
+}
