@@ -14,20 +14,20 @@
       <article class="v23-case cleaning-case">
         <header class="v23-case-head">
           <img class="v23-project-icon" src="assets/desktop/cleaning.png" alt="">
-          <div><h1>${tr('Cleaning company', 'Клининговая компания')}</h1>
-            <div class="v23-meta">${tr('WEBSITE · DESIGN & DEVELOPMENT', 'САЙТ · ДИЗАЙН И РАЗРАБОТКА')}</div>
+          <div><h1>NEATMI</h1>
+            <div class="v23-meta">${tr('INDEPENDENT DEMO PROJECT', 'САМОСТОЯТЕЛЬНЫЙ ДЕМО-ПРОЕКТ')}</div>
           </div>
         </header>
-        <div class="cleaning-status" role="status"><span aria-hidden="true"></span>${tr('In development', 'В разработке')}</div>
+        <div class="cleaning-status" role="status"><span aria-hidden="true"></span>${tr('Independent concept', 'Самостоятельный концепт')}</div>
         <div class="v23-copy"><p>${tr(
-          'A website for a cleaning company, currently in development. This screen recording shows the work in progress: page structure, visual direction and the browsing experience.',
-          'Сайт клининговой компании, который сейчас находится в разработке. В записи экрана — текущая версия проекта: структура страниц, визуальное направление и взаимодействие с сайтом.'
+          'An independent demonstrational website concept for a cleaning service. It maps the booking flow from service type and rooms to an estimate and extras. The rates and request flow are not live.',
+          'Самостоятельный демонстрационный концепт сайта клинингового сервиса: путь от типа уборки и комнат к расчёту и дополнениям. Тарифы условные, заявки не подключены.'
         )}</p></div>
         <div class="v23-section-title">${tr('WEBSITE PREVIEW', 'ПРЕВЬЮ САЙТА')}</div>
         <figure class="cleaning-preview">
           <video data-no-audio src="assets/projects/cleaning/website-preview.mp4" poster="assets/projects/cleaning/poster.jpg" controls muted loop playsinline preload="metadata" aria-label="${tr('Cleaning company website preview', 'Превью сайта клининговой компании')}"></video>
         </figure>
-        <p class="cleaning-caption">${tr('Work in progress — not the final release.', 'Рабочая версия — не финальный релиз.')}</p>
+        <p class="cleaning-caption">${tr('Demonstration concept — not a client launch.', 'Демонстрационный концепт — не клиентский запуск.')}</p>
       </article>
     </div></div>`;
   };
