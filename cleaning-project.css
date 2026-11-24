@@ -13,3 +13,37 @@
   .window[data-key="cleaning"] .window-body {padding:54px 0 0!important;}
   .cleaning-preview .sound-switch {top:5px;bottom:auto;}
 }
+
+/* Public web portfolio cases. The visual language stays inside the existing
+   dark editorial application surface rather than introducing a new landing. */
+.window[data-key="web"] {background:#1d1d1d;}
+.window[data-key="web"] .window-body {padding:56px 0 0!important;height:100%!important;overflow:hidden!important;background:#1d1d1d!important;}
+.web-folder-thumb {background:linear-gradient(145deg,#a4a6ad,#4e545d)!important;overflow:hidden!important;}
+.web-folder-thumb::before {content:"";position:absolute;inset:9px 8px 7px;border:1px solid rgba(255,255,255,.48);border-radius:4px;background:linear-gradient(135deg,rgba(10,12,15,.48),rgba(255,255,255,.1));}
+.web-folder-thumb span {position:relative;z-index:1;color:#fff;font-size:15px;font-weight:850;letter-spacing:-.07em;text-shadow:0 1px 3px rgba(0,0,0,.45);}
+.web-projects-intro {padding:2px 0 27px;margin-bottom:25px;border-bottom:1px solid #3b3b3b;}
+.web-projects-intro h1 {margin:7px 0 10px;font-size:34px;line-height:.94;letter-spacing:-.035em;}
+.web-projects-intro p {max-width:690px;margin:0;color:#d4d4d4;font-size:15px;line-height:1.55;}
+.web-case {display:grid;grid-template-columns:minmax(230px,5fr) minmax(0,7fr);gap:22px;padding:0 0 30px;margin:0 0 30px;border-bottom:1px solid #3b3b3b;}
+.web-case-visual {position:relative;min-height:220px;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:#26282d;isolation:isolate;}
+.web-case-visual::before,.web-case-visual::after {content:"";position:absolute;inset:auto;z-index:-1;display:block;}
+.web-case-visual::before {width:155%;height:70%;left:-25%;bottom:-32%;border-radius:50%;background:rgba(255,255,255,.13);transform:rotate(-12deg);}
+.web-case-visual::after {width:68%;height:52%;right:-12%;top:-16%;border:1px solid rgba(255,255,255,.18);border-radius:4px;transform:rotate(13deg);}
+.web-case-visual--stone {background:linear-gradient(150deg,#373b3f,#0e1012 67%);}
+.web-case-visual--clean {background:linear-gradient(150deg,#e6ede9,#8ba29b 66%,#47655f);}
+.web-case-visual--line {background:linear-gradient(150deg,#e6e1d8,#a59c90 54%,#2b2926);}
+.web-case-visual--milk {background:linear-gradient(150deg,#f2e6d7,#d88a6b 59%,#6d3e46);}
+.web-case-visual--sun {background:linear-gradient(150deg,#f4bd56,#da6d4f 55%,#4d3041);}
+.web-case-index {position:absolute;top:12px;left:13px;font-size:10px;letter-spacing:.11em;color:rgba(255,255,255,.72);}
+.web-case-visual>strong {position:absolute;right:13px;bottom:12px;max-width:75%;color:#fff;font-size:18px;letter-spacing:-.04em;text-align:right;text-shadow:0 2px 12px rgba(0,0,0,.3);}
+.web-project-mark {position:absolute;left:50%;top:50%;width:52%;height:52%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.5);border-radius:7px;background:rgba(11,13,15,.22);box-shadow:0 18px 35px rgba(0,0,0,.18);overflow:hidden;}
+.web-project-mark::before {content:"";display:block;height:22%;border-bottom:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.17);}
+.web-project-mark span,.web-project-mark i,.web-project-mark b {position:absolute;display:block;border-radius:3px;background:rgba(255,255,255,.74);}
+.web-project-mark span {left:13%;right:29%;top:35%;height:10%;}.web-project-mark i {left:13%;right:13%;top:53%;height:7%;}.web-project-mark b {left:13%;width:32%;top:69%;height:7%;}
+.web-case-copy {align-self:center;}.web-case-copy h2 {margin:7px 0 10px;font-size:27px;line-height:1;letter-spacing:-.035em;}.web-case-copy p {margin:0;color:#d4d4d4;font-size:14px;line-height:1.55;}.web-case-copy .role-list {margin-top:14px;}.web-case-link {margin-top:15px;font-size:10px;}
+.web-projects-note {max-width:670px;margin:0;color:#9e9e9e;font-size:11px;line-height:1.5;}
+@media(max-width:768px) {
+  .window[data-key="web"] .window-body {padding:54px 0 0!important;}
+  .web-projects-intro {padding-bottom:20px;margin-bottom:20px;}.web-projects-intro h1 {font-size:25px;}.web-projects-intro p {font-size:14px;}
+  .web-case {grid-template-columns:1fr;gap:13px;padding-bottom:23px;margin-bottom:23px;}.web-case-visual {min-height:184px;}.web-case-copy h2 {font-size:23px;}.web-case-copy p {font-size:14px;}
+}
